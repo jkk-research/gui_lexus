@@ -25,11 +25,11 @@ class PlotHandler(Node):
 
         self.win = QtWidgets.QMainWindow()
         node = Node("lexus_gui_node")
-        self.accelPub = node.create_publisher(SystemCmdFloat, "/pacmod/as_rx/accel_cmd", 10)
-        self.brakePub = node.create_publisher(SystemCmdFloat, "/pacmod/as_rx/brake_cmd", 10)
-        self.steerPub = node.create_publisher(SteeringCmd, "/pacmod/as_rx/steer_cmd", 10)
-        self.speedPub = node.create_publisher(Twist, "/cmd_vel", 10)
-        self.enablePub = node.create_publisher(Bool, "/pacmod/as_rx/enable", 10)
+        self.accelPub = node.create_publisher(SystemCmdFloat, "/lexus3/pacmod/accel_cmd", 10)
+        self.brakePub = node.create_publisher(SystemCmdFloat, "/lexus3/pacmod/brake_cmd", 10)
+        self.steerPub = node.create_publisher(SteeringCmd, "/lexus3/pacmod/steer_cmd", 10)
+        self.speedPub = node.create_publisher(Twist, "/lexus3/cmd_vel", 10)
+        self.enablePub = node.create_publisher(Bool, "/lexus3/pacmod/enable", 10)
         ### self.speedSub = self.create_subscription(VehicleSpeedRpt, "/pacmod/parsed_tx/vehicle_speed_rpt", self.speed_callback, 10)
         ### self.speedSub  # prevent unused variable warning
         area = darea.DockArea()
@@ -132,19 +132,20 @@ class PlotHandler(Node):
             msg = SteeringCmd()
             msg.enable = True
             msg.rotation_rate = 3.3
-            msg.command = float(self.steerSlid.value()) / 10
+            msg.command = float(self.steerSlid.value()) / 10 * -1
             self.steerPub.publish(msg)        
             #print(msg.command)
         else:
             msg = Twist()
-            msg.linear.x = float(self.speedSlid.value()) / 100
-            msg.angular.z = float(self.steerSlid.value()) / 10
+            msg.linear.x = float(self.speedSlid.value()) / 100 
+            msg.angular.z = float(self.steerSlid.value()) / 10 * -1
             self.speedPub.publish(msg)   
 
     def speed_cmd(self):
+        print(float(self.speedSlid.value()) / 100)
         msg = Twist()
         msg.linear.x = float(self.speedSlid.value()) / 100
-        msg.angular.z = float(self.steerSlid.value()) / 10
+        msg.angular.z = float(self.steerSlid.value()) / 10 * -1
         self.speedPub.publish(msg)        
         #print(msg.linear.x)
 
@@ -158,12 +159,17 @@ class PlotHandler(Node):
             self.enableBtn.setStyleSheet("background-color: rgb(16, 200, 166);")
         else:
             self.enableBtn.setStyleSheet("background-color: rgb(40, 42, 46);")
+        print(self.enableVehicleBool)
         accelCmd = SystemCmdFloat()
         brakeCmd = SystemCmdFloat()
         steerCmd = SteeringCmd()
-        accelCmd.clear_override = self.enableVehicleBool
-        brakeCmd.clear_override = self.enableVehicleBool
-        steerCmd.clear_override = self.enableVehicleBool
+        # TODO
+        accelCmd.clear_override = True #self.enableVehicleBool
+        brakeCmd.clear_override = True #self.enableVehicleBool
+        steerCmd.clear_override = True #self.enableVehicleBool
+        #accelCmd.enable = not self.enableVehicleBool
+        #brakeCmd.enable = not self.enableVehicleBool
+        #steerCmd.enable = not self.enableVehicleBool
         self.accelPub.publish(accelCmd)
         self.brakePub.publish(brakeCmd)
         self.steerPub.publish(steerCmd)
