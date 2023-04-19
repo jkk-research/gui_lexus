@@ -142,10 +142,11 @@ class PlotHandler(Node):
             self.speedPub.publish(msg)   
 
     def speed_cmd(self):
-        print(float(self.speedSlid.value()) / 100)
         msg = Twist()
-        msg.linear.x = float(self.speedSlid.value()) / 100
+        msg.linear.x = float(self.speedSlid.value()) / 20
         msg.angular.z = float(self.steerSlid.value()) / 10 * -1
+        #print("%.2f km/h" % (msg.linear.x * 3.6))
+        self.currentSpeedLabel.setText("%.2f km/h" % (msg.linear.x * 3.6))
         self.speedPub.publish(msg)        
         #print(msg.linear.x)
 
