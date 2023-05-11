@@ -23,7 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'control_vehicle = gui_lexus.control_vehicle:main'
+            'control_vehicle = gui_lexus.control_vehicle:main',
+            'pub_lane_markers = gui_lexus.pub_lane_markers:main'
         ],
     },
 )
