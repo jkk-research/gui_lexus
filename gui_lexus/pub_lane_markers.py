@@ -13,8 +13,8 @@ import os
 class MinimalPublisher(Node):
 
     def __init__(self):
-        super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(MarkerArray, 'topic', 10)
+        super().__init__('lanelet_publisher')
+        self.publisher_ = self.create_publisher(MarkerArray, "/lanelet", 10)
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
@@ -23,7 +23,7 @@ class MinimalPublisher(Node):
 
     def load_yaml_file(self):
         pkg_name = 'gui_lexus'
-        pkg_dir = os.popen('/bin/bash -c "source /usr/share/colcon_cd/function/colcon_cd.sh && colcon_cd %s && pwd"' % pkg_name).read().strip()
+        pkg_dir = os.popen('/bin/bash -c "cd && source /usr/share/colcon_cd/function/colcon_cd.sh && colcon_cd %s && pwd"' % pkg_name).read().strip()
         self.get_logger().info(pkg_dir)        
         with open(pkg_dir+'/resource/zalazone_uni_track_marker.yaml') as file:
             try:
@@ -84,14 +84,14 @@ class MinimalPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher()
+    lanelet_publisher = MinimalPublisher()
 
-    rclpy.spin(minimal_publisher)
+    rclpy.spin(lanelet_publisher)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
+    lanelet_publisher.destroy_node()
     rclpy.shutdown()
 
 
