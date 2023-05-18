@@ -24,7 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             'control_vehicle = gui_lexus.control_vehicle:main',
-            'pub_lane_markers = gui_lexus.pub_lane_markers:main'
+            'pub_lane_markers = gui_lexus.pub_lane_markers:main',
+            'translator_joy_vel = gui_lexus.translator_joy_vel:main'
         ],
     },
 )
