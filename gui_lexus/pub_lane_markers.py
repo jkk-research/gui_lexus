@@ -8,8 +8,6 @@ from std_msgs.msg import ColorRGBA
 import yaml
 import os
 
-
-
 class MinimalPublisher(Node):
 
     def __init__(self):

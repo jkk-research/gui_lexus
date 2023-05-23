@@ -25,7 +25,8 @@ setup(
         'console_scripts': [
             'control_vehicle = gui_lexus.control_vehicle:main',
             'pub_lane_markers = gui_lexus.pub_lane_markers:main',
-            'translator_joy_vel = gui_lexus.translator_joy_vel:main'
+            'translator_joy_vel = gui_lexus.translator_joy_vel:main',
+            'gui_ros = gui_lexus.gui_ros:main'
         ],
     },
 )
