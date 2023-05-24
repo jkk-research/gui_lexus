@@ -12,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('lib/python3.8/site-packages/' + package_name + "/ReadFiles", ['gui_lexus/ReadFiles/lexus_buttons.json']),
         (os.path.join('share', package_name), glob('launch/*launch.[pxy][yma]*')),        
     ],
     install_requires=['setuptools'],
