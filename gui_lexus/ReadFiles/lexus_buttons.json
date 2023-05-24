@@ -2,78 +2,63 @@
     "buttons":
     [
         {
-            "id":"roscoreButton",
+            "id":"rvizButton",
             "textColor":"cyan",
             "bgColor":"black",
-            "label":"roscore",
-            "command":"'screen', '-dmS', 'roscore1', 'roscore'"
-        },
-        {
-            "id":"rvizButton",
-            "label":"rviz",
-            "command":"'screen', '-mdS', 'rviz1', 'roslaunch lexus_base rviz01static.launch'"
+            "label":"rviz2",
+            "command":"'screen', '-mdS', 'rviz2', 'ros2 launch lexus_bringup rviz00.launch.py '"
         },
         {
             "id":"tftreeButton",
             "label":"tf_tree",
-            "command":"'screen', '-mdS', 'tftree1', 'rosrun rqt_tf_tree rqt_tf_tree'"
+            "command":"'screen', '-mdS', 'tftree', 'ros2 launch lexus_bringup rviz00.launch.py'"
         },
         {
             "id":"rqtReconfigureButton",
             "label":"rqt_reconfigure",
-            "command":"'screen', '-mdS', 'rqt_reconfigure1', 'rosrun rqt_reconfigure rqt_reconfigure'"
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_reconfigure rqt_reconfigure'"
         },
         {
-            "id":"duroButton",
-            "label":"duro_driver",
-            "command":"'screen', '-mdS', 'duroScreen', 'roslaunch lexus_base gps_duro.launch'"
+            "id":"3DMarkerButton",
+            "label":"3D Marker",
+            "command":"'screen', '-mdS', '3d_marker', 'ros2 launch lexus_bringup 3d_marker.launch.py'"
         },
         {
-            "id":"zed1Button",
-            "label":"zed1",
-            "command":"'screen', '-mdS', 'zedScreen', 'roslaunch lexus_base zed_default.launch'"
+            "id":"speedControlButton",
+            "label":"speed control",
+            "command":"'screen', '-mdS', 'speedControl', 'ros2 run lexus_bringup speed_control'"
         },
         {
-            "id":"tfDuroButton",
-            "label":"tf_duro",
-            "command":"'screen', '-mdS', 'tfDuro', 'roslaunch lexus_base tf_gps_duro.launch'",
+            "id":"tfStaticButton",
+            "label":"tf_static",
+            "command":"'screen', '-mdS', 'tfStatic', 'ros2 launch lexus_bringup tf_static.launch.py'",
             "textColor":"yellow",
             "bgColor":"black"
         },
         {
-            "id":"ousterLeftButton",
-            "label":"ouster_left",
-            "command":"'screen', '-mdS', 'ousterLeft', 'roslaunch lexus_base os_32_left_a.launch'"
+            "id":"gpsDuroReferenceButton",
+            "label":"gps_duro_reference",
+            "command":"'screen', '-mdS', 'gps_duro_reference', 'ros2 launch lexus_bringup gps_duro_reference.launch.py'"
         },
         {
-            "id":"ousterRightButton",
-            "label":"ouster_right",
-            "command":"'screen', '-mdS', 'ousterRight', 'roslaunch lexus_base os_32_right_a.launch'"
+            "id":"CANPacModButton",
+            "label":"can_pacmod3",
+            "command":"'screen', '-mdS', 'can_pacmod3', 'ros2 launch lexus_bringup can_pacmod3.launch.xml'"
         },
         {
             "id":"ousterCenter64Button",
             "label":"ouster_center64",
-            "command":"'screen', '-mdS', 'ousterCenter64', 'roslaunch lexus_base os_64_center_a.launch'"
+            "command":"'screen', '-mdS', 'ousterCenter64', 'ros2 launch lexus_bringup os_64_center_a.launch.py'"
         },
         {
-            "id":"CANControlButton",
-            "label":"can",
-            "command":"'screen', '-mdS', 'CANControl', 'roslaunch lexus_base can_pacmod_a.launch'"
+            "id":"zedDefaultButton",
+            "label":"zed_default",
+            "command":"'screen', '-mdS', 'zed_default', 'ros2 launch lexus_bringup zed_default_a.launch.py'"
         },
         {
-            "id":"LexusTFButton",
-            "label":"static_tf",
-            "command":"'screen', '-mdS', 'LexusTF', 'roslaunch lexus_base tf_static.launch'"
-        },
-        {
-            "id":"kalmanFilterButton",
-            "label":"kalman_filter",
-            "command":"'screen', '-mdS', 'kalman_pos', 'roslaunch kalman_pos kalman_pos01.launch'"
-        },
-        {
-            "id":"3DLaunch",
-            "label":"3d_launch",
-            "command":"'screen', '-mdS', '3d_launch', 'roslaunch lexus_base 3d.launch'"
+            "id":"mcButton",
+            "label":"mc",
+            "command":"'screen', '-mdS', 'mc', 'mc'"
         }
     ]
 }
