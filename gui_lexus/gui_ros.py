@@ -11,7 +11,6 @@ from rclpy.node import Node
 
 from .jsonreader import JSONReader
 
-
 import pyqtgraph as pg
 import pyqtgraph.Qt as qtgqt
 import pyqtgraph.dockarea as darea
@@ -31,7 +30,7 @@ class PlotHandler(Node):
         self.screenButtons = {}
         self.runningScreens = []
         pg.setConfigOptions(antialias=True)
-        self.app = qtgqt.QtGui.QApplication([])
+        self.app = qtgqt.QtWidgets.QApplication([])
 
     def initButtons(self, widget):
         col, row = (0, 4)
@@ -44,7 +43,7 @@ class PlotHandler(Node):
             if "textColor" in button.keys():
                 buttonTextColor = button["textColor"]
             
-            self.screenButtons[buttonName] = qtgqt.QtGui.QPushButton(buttonLabel)
+            self.screenButtons[buttonName] = qtgqt.QtWidgets.QPushButton(buttonLabel)
             
             widget.addWidget(self.screenButtons[buttonName], row=row, col=col)
             
@@ -61,7 +60,7 @@ class PlotHandler(Node):
         print(" ")
 
     def initializePlot(self):
-        self.win = qtgqt.QtGui.QMainWindow()
+        self.win = qtgqt.QtWidgets.QMainWindow()
         area = darea.DockArea()
         white = (200, 200, 200)
         red = (200, 66, 66); redB = pg.mkBrush(200, 66, 66, 200)
@@ -77,10 +76,10 @@ class PlotHandler(Node):
         area.addDock(dock1, "left")
         widg1 = pg.LayoutWidget()
         self.initButtons(widg1)
-        self.updateBtn = qtgqt.QtGui.QPushButton("update screen list")
-        self.wipeBtn = qtgqt.QtGui.QPushButton("wipe screens")
+        self.updateBtn = qtgqt.QtWidgets.QPushButton("update screen list")
+        self.wipeBtn = qtgqt.QtWidgets.QPushButton("wipe screens")
         
-        WelcomeLabel = qtgqt.QtGui.QLabel("WELCOME TO LEXUS GUI")
+        WelcomeLabel = qtgqt.QtWidgets.QLabel("WELCOME TO LEXUS GUI")
 
         widg1.addWidget(self.wipeBtn, row=1, col=0)
         widg1.addWidget(self.updateBtn, row=1, col=4)
@@ -91,7 +90,7 @@ class PlotHandler(Node):
         self.state = None
         self.updateBtn.clicked.connect(self.update)
         self.wipeBtn.clicked.connect(self.wipeAllScreens)
-        self.listwidget = qtgqt.QtGui.QListWidget()
+        self.listwidget = qtgqt.QtWidgets.QListWidget()
         self.listwidget.setStyleSheet("""QListWidget{ color: rgb(171, 178, 191);}""")
         self.listwidget.clicked.connect(self.listclick)
         
@@ -176,7 +175,7 @@ def main(args=None):
     ph = PlotHandler()
     ph.initializePlot()
     if (sys.flags.interactive != 1) or not hasattr(qtgqt.QtCore, "PYQT_VERSION"):
-        qtgqt.QtGui.QApplication.instance().exec_()
+        qtgqt.QtWidgets.QApplication.instance().exec()
     rclpy.shutdown()
 
 if __name__ == '__main__':

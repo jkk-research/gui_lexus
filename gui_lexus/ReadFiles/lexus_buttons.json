@@ -6,7 +6,7 @@
             "textColor":"cyan",
             "bgColor":"black",
             "label":"rviz2",
-            "command":"'screen', '-mdS', 'rviz2', 'ros2 launch lexus_bringup rviz00.launch.py '"
+            "command":"'screen', '-mdS', 'rviz2', 'ros2 run rviz2 rviz2 '"
         },
         {
             "id":"tftreeButton",
