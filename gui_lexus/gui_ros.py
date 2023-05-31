@@ -116,13 +116,20 @@ class PlotHandler(Node):
     def buttonClicked(self, command):
         executeCommand = []
         # ssh nvidia@192.168.1.5 screen -mdS mc2 bash -c "source ~/.bashrc&& mc"
-        for i in range(0, len(command)-1):
-            executeCommand.append(command[i])
-        executeCommand.append('bash')
-        executeCommand.append('-c')
-        # executeCommand.append('"')
-        executeCommand.append(command[len(command)-1])
-        # executeCommand.append('"')
+        if(command[0]=='screen'):
+            for i in range(0, len(command)-1):
+                executeCommand.append(command[i])
+            executeCommand.append('bash')
+            executeCommand.append('-c')
+            executeCommand.append('"')
+            executeCommand.append(command[len(command)-1])
+            executeCommand.append('"')
+        else:
+            executeCommand.append('bash')
+            executeCommand.append('-c')
+            for i in range(0, len(command)):
+                executeCommand.append(command[i])
+            print(executeCommand)
         print(" ".join(executeCommand))
         #print(sshCommand)
         #subprocess.check_call(sshCommand) 
