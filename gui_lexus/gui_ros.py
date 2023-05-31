@@ -24,7 +24,7 @@ class PlotHandler(Node):
         try:
             buttonJSON = self.get_parameter('buttons').value
         except:
-            self.declare_parameter('buttons', 'lexus.json')
+            self.declare_parameter('buttons', 'default.json')
             buttonJSON = self.get_parameter('buttons').value
         buttonReader = JSONReader(scriptDir + '/readfiles/' + buttonJSON)
         self.buttonData = buttonReader.data['buttons']
