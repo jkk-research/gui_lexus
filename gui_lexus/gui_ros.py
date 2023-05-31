@@ -121,9 +121,7 @@ class PlotHandler(Node):
                 executeCommand.append(command[i])
             executeCommand.append('bash')
             executeCommand.append('-c')
-            executeCommand.append('"')
             executeCommand.append(command[len(command)-1])
-            executeCommand.append('"')
         else:
             executeCommand.append('bash')
             executeCommand.append('-c')
@@ -164,18 +162,7 @@ class PlotHandler(Node):
 
     def wipeAllScreens(self):
         self.runningScreens = []
-
-        AllScreens = self.checkIfScreenIsRunning()
-        print(AllScreens)
-
-        if AllScreens['localrun'][0]:
-            lines = AllScreens['localrun'][1].splitlines()
-            # print("Lines:", lines)
-            for i in range(1, len(lines)-1):
-                line = lines[i].decode('utf-8')
-                PID = line.split()[0].strip().split('.')[1]
-                p = subprocess.Popen(['screen', '-XS', PID, 'quit'])
-        
+        subprocess.Popen(['pkill', 'screen'])
         self.update()
 
 def main(args=None):
