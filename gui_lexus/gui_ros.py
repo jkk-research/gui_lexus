@@ -14,17 +14,19 @@ from .jsonreader import JSONReader
 import pyqtgraph as pg
 import pyqtgraph.Qt as qtgqt
 import pyqtgraph.dockarea as darea
+from ament_index_python.packages import get_package_share_directory
 
 class PlotHandler(Node):
     def __init__(self):
         super().__init__('gui_buttons')
-        scriptDir = os.path.dirname(os.path.realpath(__file__))
+        # may raise PackageNotFoundError
+        scriptDir = get_package_share_directory('gui_lexus')
         try:
             buttonJSON = self.get_parameter('buttons').value
         except:
-            self.declare_parameter('buttons', 'lexus_buttons.json')
+            self.declare_parameter('buttons', 'lexus.json')
             buttonJSON = self.get_parameter('buttons').value
-        buttonReader = JSONReader(scriptDir + '/ReadFiles/' + buttonJSON)
+        buttonReader = JSONReader(scriptDir + '/readfiles/' + buttonJSON)
         self.buttonData = buttonReader.data['buttons']
         print(self.buttonData)
         self.screenButtons = {}
