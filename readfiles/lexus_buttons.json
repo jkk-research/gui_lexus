@@ -120,7 +120,6 @@
             "label":"reinit control",
             "textColor":"darkred",
             "bgColor":"pink",
-            "__comment":"TODO: ",
             "command": "'`ros2 topic pub --once /lexus3/control_reinit std_msgs/msg/Bool \"{data: true}\"'`"
         },          
         {
