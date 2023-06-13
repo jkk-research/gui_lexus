@@ -74,21 +74,19 @@ class PlotHandler(Node):
         self.win.move(600, 200)
         self.win.setCentralWidget(area)
         
-        dock1 = darea.Dock("", size = (1,1))  # give this dock minimum possible size
+        dock1 = darea.Dock("WELCOME TO LEXUS GUI", size = (1,1))  # give this dock minimum possible size
         area.addDock(dock1, "left")
         widg1 = pg.LayoutWidget()
         self.initButtons(widg1)
         self.updateBtn = qtgqt.QtWidgets.QPushButton("update screen list")
         self.wipeBtn = qtgqt.QtWidgets.QPushButton("wipe screens")
-        
-        WelcomeLabel = qtgqt.QtWidgets.QLabel("WELCOME TO LEXUS GUI")
 
         widg1.addWidget(self.wipeBtn, row=1, col=0)
         widg1.addWidget(self.updateBtn, row=1, col=4)
-        widg1.addWidget(WelcomeLabel, row=0, col=2)
         widg1.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(171, 178, 191);")
         dock1.setStyleSheet("background-color: rgb(18, 20, 23);")
         dock1.addWidget(widg1)
+
         self.state = None
         self.updateBtn.clicked.connect(self.update)
         self.wipeBtn.clicked.connect(self.wipeAllScreens)
@@ -100,6 +98,16 @@ class PlotHandler(Node):
         self.listwidget
         
         dock1.addWidget(self.listwidget)
+
+        widg2 = pg.LayoutWidget()
+        self.saveWayPointsButton = qtgqt.QtWidgets.QPushButton("Save Waypoints")
+        self.loadWayPointsButton = qtgqt.QtWidgets.QPushButton("Load Waypoints")
+        widg2.addWidget(self.saveWayPointsButton, row=0, col=0)
+        widg2.addWidget(self.loadWayPointsButton, row=1, col=0)
+
+        self.loadWayPointsButton.clicked.connect(self.loadWaypoints)
+
+        dock1.addWidget(widg2)
 
         self.update()
         self.timer = qtgqt.QtCore.QTimer()
@@ -164,6 +172,14 @@ class PlotHandler(Node):
         self.runningScreens = []
         subprocess.Popen(['pkill', 'screen'])
         self.update()
+
+    def loadWaypoints(self):
+        filename = qtgqt.QtWidgets.QFileDialog.getOpenFileName(directory=".", filter="Text files (*.txt)")
+
+        executeCommand = ['screen', '-mdS', 'waypoint_loader', 'bash', '-c', 'ros2', 'run' f'wayp_plan_tools waypoint_loader --ros-args -p file_name:={filename[0]}']
+
+        if filename[0]:
+            p = subprocess.Popen(executeCommand, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
 def main(args=None):
     rclpy.init(args=args)
