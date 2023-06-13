@@ -106,6 +106,7 @@ class PlotHandler(Node):
         widg2.addWidget(self.loadWayPointsButton, row=1, col=0)
 
         self.loadWayPointsButton.clicked.connect(self.loadWaypoints)
+        self.saveWayPointsButton.clicked.connect(self.saveWaypoints)
 
         dock1.addWidget(widg2)
 
@@ -135,7 +136,7 @@ class PlotHandler(Node):
             executeCommand.append('-c')
             for i in range(0, len(command)):
                 executeCommand.append(command[i])
-            print(executeCommand)
+            # print(executeCommand)
         print(" ".join(executeCommand))
         #print(sshCommand)
         #subprocess.check_call(sshCommand) 
@@ -176,7 +177,15 @@ class PlotHandler(Node):
     def loadWaypoints(self):
         filename = qtgqt.QtWidgets.QFileDialog.getOpenFileName(directory=".", filter="Text files (*.txt);; CSV files (*.csv)")
 
-        executeCommand = ['screen', '-mdS', 'waypoint_loader', 'bash', '-c', 'ros2', 'run' f'wayp_plan_tools waypoint_loader --ros-args -p file_name:={filename[0]}']
+        executeCommand = ['screen', '-mdS', 'waypoint_loader', 'bash', '-c', 'ros2', 'run' f'wayp_plan_tools waypoint_loader --ros-args -p file_name:={filename[0]} -p file_dir:=/mnt/bag/waypoints']
+
+        if filename[0]:
+            p = subprocess.Popen(executeCommand, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    
+    def saveWaypoints(self):
+        filename = qtgqt.QtWidgets.QFileDialog.getSaveFileName(directory=".", filter="All Files(*);;Text Files(*.txt);; CSV files(*.csv)")
+
+        executeCommand = ['screen', '-mdS', 'waypoint_saver', 'bash', '-c', 'ros2', 'run' f'wayp_plan_tools waypoint_saver --ros-args -p file_name:={filename[0]} -p file_dir:=/mnt/bag/waypoints']
 
         if filename[0]:
             p = subprocess.Popen(executeCommand, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
