@@ -174,7 +174,7 @@ class PlotHandler(Node):
         self.update()
 
     def loadWaypoints(self):
-        filename = qtgqt.QtWidgets.QFileDialog.getOpenFileName(directory=".", filter="Text files (*.txt)")
+        filename = qtgqt.QtWidgets.QFileDialog.getOpenFileName(directory=".", filter="Text files (*.txt);; CSV files (*.csv)")
 
         executeCommand = ['screen', '-mdS', 'waypoint_loader', 'bash', '-c', 'ros2', 'run' f'wayp_plan_tools waypoint_loader --ros-args -p file_name:={filename[0]}']
 
