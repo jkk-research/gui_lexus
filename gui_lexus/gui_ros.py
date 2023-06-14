@@ -172,6 +172,7 @@ class PlotHandler(Node):
     def wipeAllScreens(self):
         self.runningScreens = []
         subprocess.Popen(['pkill', 'screen'])
+        subprocess.Popen(['screen', '-wipe'])
         self.update()
 
     def loadWaypoints(self):
