@@ -73,12 +73,22 @@
         {
             "id":"path_steering_and_kmph",
             "label":"path, steering and km/h",
-            "command":"'screen', '-mdS', 'path_steering_and_kmph', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p marker_color:=b -p path_size:=550'"
+            "command":"'screen', '-mdS', 'path_steering_and_kmph', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p marker_color:=b -p path_size:=550 -p publish_kmph:=true -p pose_topic:=lexus3/current_pose'"
+        },
+        {
+            "id":"path_odom",
+            "label":"odom path marker",
+            "command":"'screen', '-mdS', 'path_odom', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p publish_steer_marker:=false -p path_size:=550 -p publish_kmph:=false -p pose_topic:=lexus3/odom -p path_topic:=marker_odom -p pose_frame:=lexus3/odom -r __node:=my_odom'"
+        },    
+        {
+            "id":"odom",
+            "label":"odom",
+            "command":"'screen', '-mdS', 'odom_tf', 'ros2 run lexus_bringup odom'"
         },    
         {
             "id":"speedControlButton",
             "label":"speed control",
-            "command":"'screen', '-mdS', 'speedControl', 'ros2 run lexus_bringup speed_control'"
+            "command":"'screen', '-mdS', 'speedControl', 'ros2 launch lexus_bringup speed_control.launch.py'"
         },
         {
             "id":"waypoint_loader",
@@ -131,11 +141,16 @@
             "id":"rviz_text2",
             "label":"rviz text control status",
             "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run rviz_2d_overlay_plugins string_to_overlay_text --ros-args -p string_topic:=/lexus3/control_status -p fg_color:=g'"
-        },                          
+        },  
         {
-            "id":"mcButton",
-            "label":"mc",
-            "command":"'screen', '-mdS', 'mc', 'mc'"
+            "id":"pub_lane_markers",
+            "label":"lanelet uni",
+            "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run gui_lexus pub_lane_markers'"
+        },                                  
+        {
+            "id":"rqt_graph",
+            "label":"rqt_graph",
+            "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
         }
     ]
 }
