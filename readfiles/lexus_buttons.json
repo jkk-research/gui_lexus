@@ -95,35 +95,35 @@
             "label":"waypoint load Gyor",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_loader_1', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=gyor1.csv -p file_dir:=/mnt/bag/waypoints'"
+            "command":"'screen', '-mdS', 'waypoint_loader_1', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=gyor4eto.csv -p file_dir:=/mnt/bag/waypoints -r __ns:=/lexus3'"
         },
         {
             "id":"waypoint_loader",
             "label":"waypoint load Zala",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_loader_2', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=zala08_demokor.csv -p file_dir:=/mnt/bag/waypoints'"
+            "command":"'screen', '-mdS', 'waypoint_loader_2', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=zala08_demokor.csv -p file_dir:=/mnt/bag/waypoints  -r __ns:=/lexus3'"
         },
         {
             "id":"waypoint_to_target",
             "label":"waypoint to target",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=11.0 -p lookahead_max:=17.0 -p mps_alpha:=3.5 -p mps_beta:=5.5 -p waypoint_topic:=lexus3/waypointarray'"
+            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=11.0 -p lookahead_max:=17.0 -p mps_alpha:=3.5 -p mps_beta:=5.5 -p waypoint_topic:=waypointarray -p tf_frame_id:=lexus3/base_link -p tf_child_frame_id:=map -r __ns:=/lexus3'"
         },
         {
             "id":"pursuit_control",
             "label":"pure pursuit",
             "textColor":"darkred",
             "bgColor":"pink",
-            "command":"'screen', '-mdS', 'single_goal_pursuit', 'ros2 run wayp_plan_tools single_goal_pursuit --ros-args -p cmd_topic:=lexus3/cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=lexus3/targetpoints'"
+            "command":"'screen', '-mdS', 'single_goal_pursuit', 'ros2 run wayp_plan_tools single_goal_pursuit --ros-args -p cmd_topic:=cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=targetpoints -r __ns:=/lexus3'"
         },      
         {
             "id":"stanley_control",
             "label":"stanley",
             "textColor":"darkred",
             "bgColor":"pink",
-            "command":"'screen', '-mdS', 'stanley_control', 'ros2 run wayp_plan_tools stanley_control --ros-args -p cmd_topic:=lexus3/cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=lexus3/targetpoints -p cross_track_err_rate:=0.8 -p heading_err_rate:=0.0'"
+            "command":"'screen', '-mdS', 'stanley_control', 'ros2 run wayp_plan_tools stanley_control --ros-args -p cmd_topic:=cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=targetpoints -p cross_track_err_rate:=0.05 -p heading_err_rate:=0.0 -p pursuit_rate:=0.95 -r __ns:=/lexus3'"
         },
         {
             "id":"reinit_control",
