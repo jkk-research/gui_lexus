@@ -8,11 +8,39 @@ import pacmod3_msgs.msg as pac_msg
 from sensor_msgs.msg import Joy
 from std_msgs.msg import Bool
 from rclpy.node import Node
+from rcl_interfaces.msg import SetParametersResult
 
 class Translator(Node):
+    def parameter_callback(self, params):
+        for param in params:
+            if param.name == "steer_gain":
+                self.steer_gain = param.value
+                self.get_logger().info("steer_gain: %.1f" % (self.steer_gain))
+            if param.name == "accel_gain":
+                self.accel_gain = param.value
+                self.get_logger().info("accel_gain: %.1f" % (self.accel_gain))
+            if param.name == "brake_gain":
+                self.brake_gain = param.value
+                self.get_logger().info("brake_gain: %.1f" % (self.brake_gain))
+            if param.name == "input_device":
+                param_input_dev = str(param.value)
+                self.mapButtons(param_input_dev)
+                self.get_logger().info("input_device: %s" % (param_input_dev))
+        return SetParametersResult(successful=True)
+        
     def __init__(self):
-        super().__init__('translator')
-        self.get_logger().info("Started")
+        super().__init__('joy_translator')
+        self.get_logger().info("Started " + self.get_name())
+        self.declare_parameter("input_device", "joystick1") # eg joystick or steering_wheel
+        self.declare_parameter("steer_gain", 1.0) # 6 for local 5.2 for laptop
+        self.declare_parameter("accel_gain", 1.0) # 
+        self.declare_parameter("brake_gain", 1.0) # 
+        param_input_dev = str(self.get_parameter("input_device").value)
+        self.steer_gain = self.get_parameter("steer_gain").value
+        self.accel_gain = self.get_parameter("accel_gain").value
+        self.brake_gain = self.get_parameter("brake_gain").value
+        self.get_logger().info("input_device: %s steer_gain: %.1f" % (param_input_dev, self.steer_gain))
+        self.mapButtons(param_input_dev)
         self.sub1 = self.create_subscription(Joy, 'joy', self.callback, 10)
         self.sub2 = self.create_subscription(Bool, "/lexus3/pacmod/enabled", self.callbackEnabled, 10)
         self.sub1  
@@ -28,6 +56,7 @@ class Translator(Node):
         self.pubHO = self.create_publisher(pac_msg.SystemCmdBool, "/lexus3/pacmod/horn_cmd", 10)
         self.pubF = self.create_publisher(Bool, "/lexus3/pacmod/enable", 10)
         #self.pubE = self.create_publisher(Bool, "/lexus3/pacmod/enabled", 10)
+        self.add_on_set_parameters_callback(self.parameter_callback)
 
         self.last_published_time = self.get_clock().now()
         self.last_published = None
@@ -38,8 +67,35 @@ class Translator(Node):
         self.autonomStatus = True
         self.headlight = False
         self.pacmodst = True
-        self.get_logger().info("joy translator")
     
+    def mapButtons(self, input_dev):
+        if input_dev == "steering_wheel1":
+            # buttons
+            self.m_start = 0 # A button green
+            self.m_stop = 1 # B button red
+            self.m_horn = 2 # X button 
+            
+            #axes
+            self.m_steer = 0
+            self.m_joy_init = 1
+            self.m_brake = 2
+            self.m_lights_a = 4
+            self.m_accel = 5
+            self.m_headlight = 7
+        else: # joystick1
+            # buttons
+            self.m_start = 0 # A button green
+            self.m_stop = 1 # B button red
+            self.m_horn = 2 # X button 
+            
+            #axes
+            self.m_steer = 0
+            self.m_joy_init = 1
+            self.m_brake = 2
+            self.m_lights_a = 4
+            self.m_accel = 5
+            self.m_headlight = 7
+
     def timer_callback(self):
         if (self.pacmodst == False):
             self.autonomStatus = False
@@ -61,32 +117,32 @@ class Translator(Node):
         accelCmd.header.stamp = self.get_clock().now().to_msg()
         brakeCmd.header.stamp = self.get_clock().now().to_msg()
         steerCmd.header.stamp = self.get_clock().now().to_msg()
-        steerCmd.command = message.axes[0] * 5.2  # 6 for local 5.2 for laptop
-        accelCmd.command = (message.axes[5] - 1) / -2
-        brakeCmd.command = (message.axes[2] - 1) / -2
+        steerCmd.command = message.axes[self.m_steer] * self.steer_gain  
+        accelCmd.command = ((message.axes[self.m_accel] - 1) / -2) * self.accel_gain
+        brakeCmd.command = ((message.axes[self.m_brake] - 1) / -2) * self.brake_gain
         if(self.autonomStatus == False):
-            if(message.buttons[0]): # start A
+            if(message.buttons[self.m_start]): # start A
                 self.autonomStatusChanged = True
                 self.autonomStatus = True
                 self.get_logger().info("Autonomous mode on")
         TUCmd.command = 1
-        if(message.buttons[1]): # stop B
+        if(message.buttons[self.m_stop]): # stop B
             self.autonomStatusChanged = True
             self.autonomStatus = False
             self.get_logger().info("Autonomous mode off")
-        elif(message.buttons[2]): # horn  X
+        elif(message.buttons[self.m_horn]): # horn  X
             HOCmd.command = True
             #self.get_logger().info("Horn")
-        elif(message.axes[4] > 0): # lights 
+        elif(message.axes[self.m_lights_a] > 0): # lights 
             TUCmd.command = 2
             #self.get_logger().info("Left")
-        elif(message.axes[4] < 0): # lights 
+        elif(message.axes[self.m_lights_a] < 0): # lights 
             TUCmd.command = 0
             #self.get_logger().info("Right")
         #elif(message.axes[5] < 0): # lights 
         #    TUCmd.command = 3
         #    self.get_logger().info("Down")
-        elif(message.axes[7] > 0): # lights
+        elif(message.axes[self.m_headlight] > 0): # lights
             if self.headlight: 
                 self.headlight = False
                 HECmd.command = 2     
@@ -126,7 +182,7 @@ class Translator(Node):
         SHCmd.enable = self.autonomStatus
         HOCmd.enable = self.autonomStatus            
         if(self.joyInit):
-            if(message.axes[1] == 0.0):
+            if(message.axes[self.m_joy_init] == 0.0):
                 accelCmd.command = 0.0 
             else:
                 self.joyInit = False
