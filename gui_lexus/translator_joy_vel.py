@@ -87,6 +87,7 @@ class Translator(Node):
             self.m_start = 0 # A button green
             self.m_stop = 1 # B button red
             self.m_horn = 2 # X button 
+            self.m_turn_index = 3 # Y button 
             
             #axes
             self.m_steer = 0
