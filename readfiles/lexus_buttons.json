@@ -2,11 +2,18 @@
     "buttons":
     [
         {
-            "id":"rvizButton",
+            "id":"rvizButton1",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
             "label":"rviz2 zala",
             "command":"'screen', '-mdS', 'rviz2_zala', 'ros2 launch demo_jkk rviz_zala1.launch.py'"
+        },
+        {
+            "id":"rvizButton2",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "label":"rviz2 static",
+            "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
         },
         {
             "id":"gps_duro_reference",
@@ -146,7 +153,14 @@
             "id":"pub_lane_markers",
             "label":"lanelet uni",
             "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run gui_lexus pub_lane_markers'"
-        },                                  
+        },
+        {
+            "id":"joystick",
+            "label":"joystick",
+            "textColor":"darkred",
+            "bgColor":"pink",
+            "command":"'screen', '-mdS', 'joystick1', 'ros2 launch gui_lexus translator_joystick_1.launch.py'"
+        },                                                
         {
             "id":"rqt_graph",
             "label":"rqt_graph",
