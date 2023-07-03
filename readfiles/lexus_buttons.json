@@ -55,7 +55,14 @@
             "bgColor":"lightblue",
             "label":"ouster right",
             "command":"'screen', '-mdS', 'os_32_right_b', 'ros2 launch lexus_bringup os_32_right_b.launch.py'"
-        },                       
+        },         
+        {
+            "id":"os_32_left_b",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"ouster left",
+            "command":"'screen', '-mdS', 'os_32_left_b', 'ros2 launch lexus_bringup os_32_left_b.launch.py'"
+        },                               
         {
             "id":"tfStaticButton",
             "label":"tf static",
