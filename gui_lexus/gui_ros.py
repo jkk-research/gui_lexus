@@ -28,8 +28,8 @@ class PlotHandler(Node):
             buttonJSON = self.get_parameter('buttons').value
         buttonReader = JSONReader(scriptDir + '/readfiles/' + buttonJSON)
         self.buttonData = buttonReader.data['buttons']
-        print(self.buttonData)
         self.screenButtons = {}
+        self.dictOfWidgets = {}
         self.runningScreens = []
         pg.setConfigOptions(antialias=True)
         self.app = qtgqt.QtWidgets.QApplication([])
@@ -48,10 +48,9 @@ class PlotHandler(Node):
             self.screenButtons[buttonName] = qtgqt.QtWidgets.QPushButton(buttonLabel)
             
             widget.addWidget(self.screenButtons[buttonName], row=row, col=col)
-            
+
             buttonFunction = buttonFunction.replace("'","")
             buttonFunction = re.split(r'[,]\s*', buttonFunction)
-            print(" ".join(buttonFunction))
             self.screenButtons[buttonName].clicked.connect(partial(self.buttonClicked, buttonFunction))
             self.screenButtons[buttonName].setStyleSheet("background-color: " + buttonBgColor + "; color: " + buttonTextColor)
             if col<4:
@@ -59,7 +58,6 @@ class PlotHandler(Node):
             else:
                 col=0
                 row+=1
-        print(" ")
 
     def initializePlot(self):
         self.win = qtgqt.QtWidgets.QMainWindow()
@@ -124,7 +122,6 @@ class PlotHandler(Node):
 
     def buttonClicked(self, command):
         executeCommand = []
-        # ssh nvidia@192.168.1.5 screen -mdS mc2 bash -c "source ~/.bashrc&& mc"
         if(command[0]=='screen'):
             for i in range(0, len(command)-1):
                 executeCommand.append(command[i])
@@ -136,33 +133,32 @@ class PlotHandler(Node):
             executeCommand.append('-c')
             for i in range(0, len(command)):
                 executeCommand.append(command[i])
-            # print(executeCommand)
-        print(" ".join(executeCommand))
-        #print(sshCommand)
-        #subprocess.check_call(sshCommand) 
-        # TODO
+        if executeCommand[2] not in self.dictOfWidgets:
+            self.dictOfWidgets[executeCommand[2]] = 1
+        else:
+            self.dictOfWidgets[executeCommand[2]] += 1
+        executeCommand[2] = executeCommand[2]+'_'+str(self.dictOfWidgets[executeCommand[2]])
         p = subprocess.Popen(executeCommand, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        #print(p.communicate()[0])
+        print(p.communicate()[0])
         self.update()
 
 
-    def update(self):
+    def update(self, screenName=None):
         self.listwidget.clear()
-        
         AllScreens = self.checkIfScreenIsRunning()
 
         if AllScreens['localrun'][0]:
             lines = AllScreens['localrun'][1].splitlines()
-            print("Lines:", lines)
             for i in range(1, len(lines)-1):
                 line = lines[i].decode('utf-8') 
                 if line[0] == '\t':
-                    self.listwidget.insertItem(0, line.split()[0].strip().split('.')[1])
+                    actual_screen = line.split()[0].strip().split('.')[1]
+                    self.listwidget.insertItem(0, actual_screen)
                 
 
     def openscreen(self):
         item = self.listwidget.currentItem()
-        #print(item.text() + " >> double click")        
+        self.dictOfWidgets.clear()
         toexec = ''.join(['screen -r ', str(item.text()), '; exec bash'])
         subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', toexec])
 
