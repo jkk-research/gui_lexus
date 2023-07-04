@@ -2,11 +2,18 @@
     "buttons":
     [
         {
-            "id":"rvizButton",
+            "id":"rvizButton1",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
             "label":"rviz2 zala",
             "command":"'screen', '-mdS', 'rviz2_zala', 'ros2 launch demo_jkk rviz_zala1.launch.py'"
+        },
+        {
+            "id":"rvizButton2",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "label":"rviz2 static",
+            "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
         },
         {
             "id":"gps_duro_reference",
@@ -48,7 +55,14 @@
             "bgColor":"lightblue",
             "label":"ouster right",
             "command":"'screen', '-mdS', 'os_32_right_b', 'ros2 launch lexus_bringup os_32_right_b.launch.py'"
-        },                       
+        },         
+        {
+            "id":"os_32_left_b",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"ouster left",
+            "command":"'screen', '-mdS', 'os_32_left_b', 'ros2 launch lexus_bringup os_32_left_b.launch.py'"
+        },                               
         {
             "id":"tfStaticButton",
             "label":"tf static",
@@ -73,47 +87,57 @@
         {
             "id":"path_steering_and_kmph",
             "label":"path, steering and km/h",
-            "command":"'screen', '-mdS', 'path_steering_and_kmph', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p marker_color:=b -p path_size:=550'"
+            "command":"'screen', '-mdS', 'path_steering_and_kmph', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p marker_color:=b -p path_size:=550 -p publish_kmph:=true -p pose_topic:=lexus3/current_pose'"
+        },
+        {
+            "id":"path_odom",
+            "label":"odom path marker",
+            "command":"'screen', '-mdS', 'path_odom', 'ros2 run lexus_bringup path_steering_and_kmph --ros-args -p publish_steer_marker:=false -p path_size:=550 -p publish_kmph:=false -p pose_topic:=lexus3/odom -p path_topic:=marker_odom -p pose_frame:=lexus3/odom -r __node:=my_odom'"
+        },    
+        {
+            "id":"odom",
+            "label":"odom",
+            "command":"'screen', '-mdS', 'odom_tf', 'ros2 run lexus_bringup odom'"
         },    
         {
             "id":"speedControlButton",
             "label":"speed control",
-            "command":"'screen', '-mdS', 'speedControl', 'ros2 run lexus_bringup speed_control'"
+            "command":"'screen', '-mdS', 'speedControl', 'ros2 launch lexus_bringup speed_control.launch.py'"
         },
         {
             "id":"waypoint_loader",
             "label":"waypoint load Gyor",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_loader_1', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=gyor1.csv -p file_dir:=/mnt/bag/waypoints'"
+            "command":"'screen', '-mdS', 'waypoint_loader_1', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=gyor4eto.csv -p file_dir:=/mnt/bag/waypoints -r __ns:=/lexus3'"
         },
         {
             "id":"waypoint_loader",
             "label":"waypoint load Zala",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_loader_2', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=zala08_demokor.csv -p file_dir:=/mnt/bag/waypoints'"
+            "command":"'screen', '-mdS', 'waypoint_loader_2', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=zala08_demokor.csv -p file_dir:=/mnt/bag/waypoints  -r __ns:=/lexus3'"
         },
         {
             "id":"waypoint_to_target",
             "label":"waypoint to target",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=11.0 -p lookahead_max:=17.0 -p mps_alpha:=3.5 -p mps_beta:=5.5 -p waypoint_topic:=lexus3/waypointarray'"
+            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=11.0 -p lookahead_max:=17.0 -p mps_alpha:=3.5 -p mps_beta:=5.5 -p waypoint_topic:=waypointarray -p tf_frame_id:=lexus3/base_link -p tf_child_frame_id:=map -r __ns:=/lexus3'"
         },
         {
             "id":"pursuit_control",
             "label":"pure pursuit",
             "textColor":"darkred",
             "bgColor":"pink",
-            "command":"'screen', '-mdS', 'single_goal_pursuit', 'ros2 run wayp_plan_tools single_goal_pursuit --ros-args -p cmd_topic:=lexus3/cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=lexus3/targetpoints'"
+            "command":"'screen', '-mdS', 'single_goal_pursuit', 'ros2 run wayp_plan_tools single_goal_pursuit --ros-args -p cmd_topic:=cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=targetpoints -r __ns:=/lexus3'"
         },      
         {
             "id":"stanley_control",
             "label":"stanley",
             "textColor":"darkred",
             "bgColor":"pink",
-            "command":"'screen', '-mdS', 'stanley_control', 'ros2 run wayp_plan_tools stanley_control --ros-args -p cmd_topic:=lexus3/cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=lexus3/targetpoints -p cross_track_err_rate:=0.8 -p heading_err_rate:=0.0'"
+            "command":"'screen', '-mdS', 'stanley_control', 'ros2 run wayp_plan_tools stanley_control --ros-args -p cmd_topic:=cmd_vel -p wheelbase:=2.789 -p waypoint_topic:=targetpoints -p cross_track_err_rate:=0.05 -p heading_err_rate:=0.0 -p pursuit_rate:=0.95 -r __ns:=/lexus3'"
         },
         {
             "id":"reinit_control",
@@ -131,11 +155,23 @@
             "id":"rviz_text2",
             "label":"rviz text control status",
             "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run rviz_2d_overlay_plugins string_to_overlay_text --ros-args -p string_topic:=/lexus3/control_status -p fg_color:=g'"
-        },                          
+        },  
         {
-            "id":"mcButton",
-            "label":"mc",
-            "command":"'screen', '-mdS', 'mc', 'mc'"
+            "id":"pub_lane_markers",
+            "label":"lanelet uni",
+            "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run gui_lexus pub_lane_markers'"
+        },
+        {
+            "id":"joystick",
+            "label":"joystick",
+            "textColor":"darkred",
+            "bgColor":"pink",
+            "command":"'screen', '-mdS', 'joystick1', 'ros2 launch gui_lexus translator_joystick_1.launch.py'"
+        },                                                
+        {
+            "id":"rqt_graph",
+            "label":"rqt_graph",
+            "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
         }
     ]
 }

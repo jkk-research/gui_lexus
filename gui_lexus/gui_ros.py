@@ -20,13 +20,13 @@ class PlotHandler(Node):
     def __init__(self):
         super().__init__('gui_buttons')
         # may raise PackageNotFoundError
-        scriptDir = get_package_share_directory('gui_lexus')
+        self.scriptDir = get_package_share_directory('gui_lexus')
         try:
             buttonJSON = self.get_parameter('buttons').value
         except:
             self.declare_parameter('buttons', 'default.json')
             buttonJSON = self.get_parameter('buttons').value
-        buttonReader = JSONReader(scriptDir + '/readfiles/' + buttonJSON)
+        buttonReader = JSONReader(self.scriptDir + '/readfiles/' + buttonJSON)
         self.buttonData = buttonReader.data['buttons']
         self.screenButtons = {}
         self.dictOfWidgets = {}
@@ -68,6 +68,8 @@ class PlotHandler(Node):
         green = "(16, 200, 166)"; greenB = pg.mkBrush(16, 200, 166, 200)
         yellow = (244, 244, 160); yellowB = pg.mkBrush(244, 244, 160, 200)
         self.win.setWindowTitle("Screen handler")
+        self.win.setWindowIcon(qtgqt.QtGui.QIcon(self.scriptDir + "/img/icon03.png"))
+        #self.get_logger().info("Icon path: " + self.scriptDir + "/img/icon03.png")
         self.win.setFixedSize(800, 600)
         self.win.move(600, 200)
         self.win.setCentralWidget(area)
@@ -100,6 +102,7 @@ class PlotHandler(Node):
         widg2 = pg.LayoutWidget()
         self.saveWayPointsButton = qtgqt.QtWidgets.QPushButton("Save Waypoints")
         self.loadWayPointsButton = qtgqt.QtWidgets.QPushButton("Load Waypoints")
+        widg2.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(230, 240, 250);")
         widg2.addWidget(self.saveWayPointsButton, row=0, col=0)
         widg2.addWidget(self.loadWayPointsButton, row=1, col=0)
 
