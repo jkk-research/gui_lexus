@@ -26,7 +26,7 @@ colcon build --packages-select gui_lexus
 
 ### `Terminal 2` 🔵 run
 ```
-source ~/ros2_ws/install/local_setup.bash && source ~/ros2_ws/install/setup.bash
+source ~/ros2_ws/install/local_setup.bash
 ros2 run gui_lexus control_vehicle
 ros2 launch gui_lexus only_gui.launch.py
 ros2 launch gui_lexus foxglove_bridge_launch.xml
@@ -51,4 +51,5 @@ dev@u22glx:~/ros2_ws/src/gui_lexus(main)$
 ``` yaml
 ros2 topic pub /pacmod/parsed_tx/vehicle_speed_rpt pacmod3_msgs/msg/VehicleSpeedRpt "{header: {stamp: {sec: 0, nanosec: 0}, frame_id: 'map'}, vehicle_speed: 0.1, vehicle_speed_valid: true}"
 ```
-![Alt text](resource/control01.png)
+![control](resource/control01.png)
+![lexus](resource/lexus01.png)

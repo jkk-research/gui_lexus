@@ -12,6 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'readfiles'), glob('readfiles/*.json')),     
+        (os.path.join('share', package_name, 'img'), glob('img/*.png')),     
         (os.path.join('share', package_name), glob('launch/*launch.[pxy][yma]*')),        
     ],
     install_requires=['setuptools'],
@@ -25,7 +27,8 @@ setup(
         'console_scripts': [
             'control_vehicle = gui_lexus.control_vehicle:main',
             'pub_lane_markers = gui_lexus.pub_lane_markers:main',
-            'translator_joy_vel = gui_lexus.translator_joy_vel:main'
+            'translator_joy_vel = gui_lexus.translator_joy_vel:main',
+            'gui_ros = gui_lexus.gui_ros:main'
         ],
     },
 )
