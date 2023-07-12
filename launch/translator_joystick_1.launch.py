@@ -12,6 +12,8 @@ def generate_launch_description():
                 {"steer_gain": 6.0},
                 {"accel_gain": 1.0},
                 {"brake_gain": 1.0},
+                {"accel_offset": 0.0},
+                {"brake_offset": 0.0},
             ],
         ),
         # ros2 run joy joy_node 

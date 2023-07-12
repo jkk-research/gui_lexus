@@ -35,10 +35,14 @@ class Translator(Node):
         self.declare_parameter("steer_gain", 1.0) # 6 for local 5.2 for laptop
         self.declare_parameter("accel_gain", 1.0) # 
         self.declare_parameter("brake_gain", 1.0) # 
+        self.declare_parameter("accel_offset", 0.0) # 
+        self.declare_parameter("brake_offset", 0.0) # 
         param_input_dev = str(self.get_parameter("input_device").value)
         self.steer_gain = self.get_parameter("steer_gain").value
         self.accel_gain = self.get_parameter("accel_gain").value
         self.brake_gain = self.get_parameter("brake_gain").value
+        self.accel_offset = self.get_parameter("accel_offset").value
+        self.brake_offset = self.get_parameter("brake_offset").value
         self.get_logger().info("input_device: %s steer_gain: %.1f" % (param_input_dev, self.steer_gain))
         self.mapButtons(param_input_dev)
         self.sub1 = self.create_subscription(Joy, 'joy', self.callback, 10)
@@ -76,12 +80,12 @@ class Translator(Node):
             self.m_horn = 2 # X button 
             
             #axes
-            self.m_steer = 0
-            self.m_joy_init = 1
-            self.m_brake = 2
-            self.m_lights_a = 4
-            self.m_accel = 5
-            self.m_headlight = 7
+            self.m_steer = 0 
+            self.m_accel = 1 # -1.0 to + 1.0
+            self.m_brake = 2 # -1.0 to + 1.0
+            self.m_joy_init = 3
+            self.m_lights_a = 3
+            self.m_headlight = 3
         else: # joystick1
             # buttons
             self.m_start = 0 # A button green
@@ -119,8 +123,10 @@ class Translator(Node):
         brakeCmd.header.stamp = self.get_clock().now().to_msg()
         steerCmd.header.stamp = self.get_clock().now().to_msg()
         steerCmd.command = message.axes[self.m_steer] * self.steer_gain  
-        accelCmd.command = ((message.axes[self.m_accel] - 1) / -2) * self.accel_gain
-        brakeCmd.command = ((message.axes[self.m_brake] - 1) / -2) * self.brake_gain
+        accelCmd.command = ((message.axes[self.m_accel] - 1) / -2) * self.accel_gain + self.accel_offset
+        brakeCmd.command = ((message.axes[self.m_brake] - 1) / -2) * self.brake_gain + self.brake_offset
+        if accelCmd.command < 0.0 or accelCmd.command >= 1.0:
+            self.get_logger().warn("accel is %.2f" %(accelCmd.command))
         if(self.autonomStatus == False):
             if(message.buttons[self.m_start]): # start A
                 self.autonomStatusChanged = True
