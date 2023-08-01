@@ -1,0 +1,58 @@
+{
+"buttons":
+[
+{
+    "id":"rvizButton1", "textColor":"darkgreen", "bgColor": "lightgreen", "label":"rviz2",
+    "command":"'screen', '-mdS', 'rviz2_zala', 'source ~/autoware/install/setup.bash && ros2 run rviz2 rviz2'"
+},
+{
+    "id":"gps_duro_reference", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref",
+    "command":"'screen', '-mdS', 'gps_duro_reference', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps1.launch.py'"
+},
+{
+    "id":"gps_duro_heading", "bgColor":"lightblue",
+    "label":"duro heading",
+    "command":"'screen', '-mdS', 'gps_duro_heading', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps2.launch.py'"
+},
+{
+    "id":"can_pacmod", "textColor":"darkblue", "bgColor":"lightblue", "label":"can",
+    "command":"'screen', '-mdS', 'can_pacmod3', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch can1.launch.xml'"
+},          
+{
+    "id":"zed_default_a",  "textColor":"darkblue",  "bgColor":"lightblue",  "label":"zed",
+    "command":"'screen', '-mdS', 'zed_default_a', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch zed_default_a.launch.py'"
+},    
+{
+    "id":"os_64_center_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster center",
+    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar1.launch.py'"
+},        
+{
+    "id":"os_32_right_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster right",
+    "command":"'screen', '-mdS', 'os_32_right_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar2.launch.py'"
+},         
+{
+    "id":"os_32_left_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster left",
+    "command":"'screen', '-mdS', 'os_32_left_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar3.launch.py'"
+},                               
+{
+    "id":"tfStaticButton", "label":"tf static NO aw", "bgColor":"darkblue",
+    "command":"'screen', '-mdS', 'tfStatic', 'source ~/autoware/install/setup.bash && ros2 launch lexus_bringup tf_static.launch.py'"
+},
+{
+    "id":"tfStaticButton", "label":"tf static", "bgColor":"darkblue", "textColor":"lightblue", 
+    "command":"'screen', '-mdS', 'tfStatic', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch tf_static.launch.py'"
+},
+{
+    "id":"rqtReconfigureButton",  "label":"rqt reconfigure", "textColor":"lightblue", 
+    "command":"'screen', '-mdS', 'rqt_reconfigure', 'source ~/autoware/install/setup.bash && ros2 run rqt_reconfigure rqt_reconfigure'"
+},
+{
+    "id":"foxglove_bridge_launch.xml",  "label":"foxglove", "bgColor":"darkred", "textColor":"pink", 
+    "command":"'screen', '-mdS', 'foxglove', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch foxglove_bridge_launch.xml'"
+},   
+{
+    "id":"rqt_graph", "label":"rqt_graph",
+    "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
+}
+]
+}
