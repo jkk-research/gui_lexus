@@ -3,7 +3,11 @@
 [
 {
     "id":"rvizButton1", "textColor":"darkgreen", "bgColor": "lightgreen", "label":"rviz2",
-    "command":"'screen', '-mdS', 'rviz2_zala', 'source ~/autoware/install/setup.bash && ros2 run rviz2 rviz2'"
+    "command":"'screen', '-mdS', 'rviz2', 'source ~/autoware/install/setup.bash && ros2 run rviz2 rviz2'"
+},
+{
+    "id":"rvizButton2", "textColor":"darkgreen", "bgColor": "lightgreen", "label":"rviz2 aw",
+    "command":"'screen', '-mdS', 'rviz2_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_tools.launch.xml'"
 },
 {
     "id":"gps_duro_reference", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref",
@@ -53,6 +57,50 @@
 {
     "id":"rqt_graph", "label":"rqt_graph",
     "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
+},
+{
+    "id":"aw_api", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"api",
+    "command":"'screen', '-mdS', 'aw_api', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_api.launch.xml'"
+},
+{
+    "id":"aw_control", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"control",
+    "command":"'screen', '-mdS', 'aw_control', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_control.launch.xml'"
+},
+{
+    "id":"aw_localization", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"localization",
+    "command":"'screen', '-mdS', 'aw_localization', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_localization.launch.xml'"
+},
+{
+    "id":"aw_map", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"map",
+    "command":"'screen', '-mdS', 'aw_map', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_map.launch.xml'"
+},
+{
+    "id":"aw_param", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"param",
+    "command":"'screen', '-mdS', 'aw_param', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_param.launch.xml'"
+},
+{
+    "id":"aw_perception", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"perception",
+    "command":"'screen', '-mdS', 'aw_perception', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_perception.launch.xml'"
+},
+{
+    "id":"aw_planning", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"planning",
+    "command":"'screen', '-mdS', 'aw_planning', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_planning.launch.xml'"
+},
+{
+    "id":"aw_sensing", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"sensing",
+    "command":"'screen', '-mdS', 'aw_sensing', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_sensing.launch.xml'"
+},
+{
+    "id":"aw_system", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"system",
+    "command":"'screen', '-mdS', 'aw_system', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_system.launch.xml'"
+},
+{
+    "id":"aw_tools", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"tools",
+    "command":"'screen', '-mdS', 'aw_tools', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_tools.launch.xml'"
+},
+{
+    "id":"aw_vehicle", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"vehicle",
+    "command":"'screen', '-mdS', 'aw_vehicle', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_vehicle.launch.xml'"
 }
 ]
 }
