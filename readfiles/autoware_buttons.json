@@ -10,6 +10,10 @@
     "command":"'screen', '-mdS', 'rviz2_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_tools.launch.xml'"
 },
 {
+    "id":"rvizButton3", "textColor":"darkgreen", "bgColor":"lightgreen", "label":"rviz2 static",
+    "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
+},
+{
     "id":"gps_duro_reference", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref",
     "command":"'screen', '-mdS', 'gps_duro_reference', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps1.launch.py'"
 },
@@ -28,15 +32,15 @@
 },    
 {
     "id":"os_64_center_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster center",
-    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar1.launch.py'"
+    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar1.launch.py'"
 },        
 {
     "id":"os_32_right_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster right",
-    "command":"'screen', '-mdS', 'os_32_right_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar2.launch.py'"
+    "command":"'screen', '-mdS', 'os_32_right_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_right.launch.py'"
 },         
 {
     "id":"os_32_left_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster left",
-    "command":"'screen', '-mdS', 'os_32_left_b', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch lidar3.launch.py'"
+    "command":"'screen', '-mdS', 'os_32_left_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_left.launch.py'"
 },                               
 {
     "id":"tfStaticButton", "label":"tf static NO aw", "bgColor":"darkblue",
@@ -51,8 +55,12 @@
     "command":"'screen', '-mdS', 'rqt_reconfigure', 'source ~/autoware/install/setup.bash && ros2 run rqt_reconfigure rqt_reconfigure'"
 },
 {
+    "id":"rqt_tf_tree",  "label":"rqt_tf_tree", "textColor":"lightblue", 
+    "command":"'screen', '-mdS', 'rqt_tf_tree', 'source ~/autoware/install/setup.bash && ros2 run rqt_tf_tree rqt_tf_tree'"
+},
+{
     "id":"foxglove_bridge_launch.xml",  "label":"foxglove", "bgColor":"darkred", "textColor":"pink", 
-    "command":"'screen', '-mdS', 'foxglove', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch foxglove_bridge_launch.xml'"
+    "command":"'screen', '-mdS', 'foxglove', 'source ~/autoware/install/setup.bash && ros2 launch lexus_bringup foxglove_bridge_launch.xml'"
 },   
 {
     "id":"rqt_graph", "label":"rqt_graph",
@@ -101,6 +109,22 @@
 {
     "id":"aw_vehicle", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"vehicle",
     "command":"'screen', '-mdS', 'aw_vehicle', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_vehicle.launch.xml'"
+},
+{
+    "id":"pacmod_interface", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"pacmod_interface",
+    "command":"'screen', '-mdS', 'pacmod_interface', 'source ~/autoware/install/setup.bash && ros2 launch pacmod_interface pacmod_interface.launch.xml vehicle_model:=lexus3_vehicle'"
+}, 
+{
+    "id":"pointcloud_preprocessor", "textColor":"darkyellow", "bgColor": "lightyellow", "label":"pointcloud_preprocessor",
+    "command":"'screen', '-mdS', 'pointcloud_preprocessor', 'source ~/autoware/install/setup.bash && ros2 launch pointcloud_preprocessor preprocessor.launch.xml'"
+},
+{
+    "id":"autoware_all_in",  "bgColor":"darkred", "textColor":"pink", "label":"autoware all in", 
+    "command":"'screen', '-mdS', 'autoware_all_in', 'source ~/autoware/install/setup.bash && ros2 launch ros2 launch autoware_launch autoware.launch.xml vehicle_model:=lexus3_vehicle sensor_kit:=lexus3_sensor_kit sensor_model:=lexus3_sensor_kit map_path:=/home/dev/autoware_map/gyor_campus'"
+},   
+{
+    "id":"relay1", "textColor":"lightblue", "bgColor":"darkblue", "label":"relay1",
+    "command":"'screen', '-mdS', 'relay1', 'source ~/autoware/install/setup.bash && ros2 run topic_tools relay /lexus3/os_center/points /sensing/lidar/concatenated/pointcloud'"
 }
 ]
 }

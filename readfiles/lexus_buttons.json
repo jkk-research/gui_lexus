@@ -43,6 +43,20 @@
             "command":"'screen', '-mdS', 'zed_default_a', 'ros2 launch lexus_bringup zed_default_a.launch.py'"
         },    
         {
+            "id":"mako1",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"mako1",
+            "command":"'screen', '-mdS', 'mako1', 'ros2 launch lexus_bringup mako1.launch.py'"
+        },         
+        {
+            "id":"mako2",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"mako2",
+            "command":"'screen', '-mdS', 'mako2', 'ros2 launch lexus_bringup mako2.launch.py'"
+        },
+        {
             "id":"os_64_center_b",
             "textColor":"darkblue",
             "bgColor":"lightblue",
