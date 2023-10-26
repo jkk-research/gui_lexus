@@ -89,11 +89,6 @@
             "command":"'screen', '-mdS', '3d_marker', 'ros2 launch lexus_bringup 3d_marker.launch.py'"
         },
         {
-            "id":"rqtReconfigureButton",
-            "label":"rqt reconfigure",
-            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_reconfigure rqt_reconfigure'"
-        },
-        {
             "id":"foxglove_bridge_launch.xml",
             "label":"foxglove",
             "command":"'screen', '-mdS', 'foxglove', 'ros2 launch lexus_bringup foxglove_bridge_launch.xml'"
@@ -181,10 +176,30 @@
             "textColor":"darkred",
             "bgColor":"pink",
             "command":"'screen', '-mdS', 'joystick1', 'ros2 launch gui_lexus translator_joystick_1.launch.py'"
-        },                                                
+        },                        
+        {
+            "id":"rqt_reconfigure_button",
+            "label":"rqt reconfigure",
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_reconfigure rqt_reconfigure'"
+        },        
+        {
+            "id":"rqt_tf_tree",
+            "label":"rqt tf tree",
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_tf_tree rqt_tf_tree'"
+        },                        
+        {
+            "id":"rqt_topic",
+            "label":"rqt topic",
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_topic rqt_topic'"
+        },                        
+        {
+            "id":"rqt_console",
+            "label":"rqt console",
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_console rqt_console'"
+        },       
         {
             "id":"rqt_graph",
-            "label":"rqt_graph",
+            "label":"rqt graph",
             "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
         }
     ]

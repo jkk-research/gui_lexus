@@ -3,11 +3,11 @@
 [
 {
     "id":"rvizButton1", "textColor":"darkgreen", "bgColor": "lightgreen", "label":"rviz2",
-    "command":"'screen', '-mdS', 'rviz2', 'source ~/autoware/install/setup.bash && ros2 run rviz2 rviz2'"
+    "command":"'screen', '-mdS', 'rviz2', 'source  ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 run rviz2 rviz2'"
 },
 {
     "id":"rvizButton2", "textColor":"darkgreen", "bgColor": "lightgreen", "label":"rviz2 aw",
-    "command":"'screen', '-mdS', 'rviz2_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch aw_tools.launch.xml'"
+    "command":"'screen', '-mdS', 'rviz2_aw', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch aw_tools.launch.xml'"
 },
 {
     "id":"rvizButton3", "textColor":"darkgreen", "bgColor":"lightgreen", "label":"rviz2 static",
