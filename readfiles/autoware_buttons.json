@@ -14,8 +14,12 @@
     "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
 },
 {
-    "id":"gps_duro_reference", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref",
-    "command":"'screen', '-mdS', 'gps_duro_reference', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps1.launch.py'"
+    "id":"gps_duro_reference_gyor", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref gyor",
+    "command":"'screen', '-mdS', 'gps_duro_reference_gyor', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps1.launch.py location:=gyor'"
+},
+{
+    "id":"gps_duro_reference_zala", "textColor":"darkblue", "bgColor":"lightblue", "label":"duro ref zala",
+    "command":"'screen', '-mdS', 'gps_duro_reference_zala', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch gps1.launch.py location:=zala'"
 },
 {
     "id":"gps_duro_heading", "bgColor":"lightblue",
@@ -32,7 +36,7 @@
 },    
 {
     "id":"os_64_center_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster center",
-    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar1.launch.py'"
+    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_center.launch.py'"
 },        
 {
     "id":"os_32_right_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster right",

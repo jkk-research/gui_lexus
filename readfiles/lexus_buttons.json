@@ -185,17 +185,17 @@
         {
             "id":"rqt_tf_tree",
             "label":"rqt tf tree",
-            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_tf_tree rqt_tf_tree'"
+            "command":"'screen', '-mdS', 'rqt_tf_tree', 'ros2 run rqt_tf_tree rqt_tf_tree'"
         },                        
         {
             "id":"rqt_topic",
             "label":"rqt topic",
-            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_topic rqt_topic'"
+            "command":"'screen', '-mdS', 'rqt_topic', 'ros2 run rqt_topic rqt_topic'"
         },                        
         {
             "id":"rqt_console",
             "label":"rqt console",
-            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_console rqt_console'"
+            "command":"'screen', '-mdS', 'rqt_console', 'ros2 run rqt_console rqt_console'"
         },       
         {
             "id":"rqt_graph",
