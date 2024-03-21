@@ -29,6 +29,20 @@
             "command":"'screen', '-mdS', 'gps_duro_heading', 'ros2 launch lexus_bringup gps_duro_heading.launch.py'"
         },
         {
+            "id":"gps_duro_dual",
+            "bgColor":"lightblue",
+            "textColor":"darkblue",
+            "label":"duro dual",
+            "command":"'screen', '-mdS', 'gps_duro_dual', 'ros2 launch lexus_bringup gps_duro_dual_heading.launch.py'"
+        },        
+        {
+            "id":"gps_nova_a",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"nova gps a",
+            "command":"'screen', '-mdS', 'gps_nova_a', 'ros2 launch lexus_bringup gps_nova_a.launch.py'"
+        },
+        {
             "id":"can_pacmod",
             "textColor":"darkblue",
             "bgColor":"lightblue",
@@ -201,6 +215,22 @@
             "id":"rqt_graph",
             "label":"rqt graph",
             "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
+        },
+        {
+            "textColor":"lightblue",
+            "bgColor":"darkblue",
+            "id":"ground_filt_a",
+            "label":"ground filt a",
+            "command":"'screen', '-mdS', 'ground_filt_a', 'ros2 launch lexus_bringup ground_filt_patchworkpp_a.launch.py'"
+        },
+        {
+            "textColor":"lightblue",
+            "bgColor":"darkblue",
+            "id":"kiss_icp_a",
+            "label":"kiss icp a",
+            "command":"'screen', '-mdS', 'kiss_icp_a', 'ros2 launch lexus_bringup lidar_odom_kiss_icp_a.launch.py'"
         }
+        
+
     ]
 }

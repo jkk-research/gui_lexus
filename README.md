@@ -1,6 +1,8 @@
 # `gui_lexus` ROS2 package
 ROS2 GUI for Lexus
 
+[![Static Badge](https://img.shields.io/badge/ROS_2-Humble-34aec5)](https://docs.ros.org/en/humble/)
+
 ## Build
 
 It is assumed that the workspace is `~/ros2_ws/`. Tested on Ubuntu 22.04 ROS2 Humble.
@@ -51,5 +53,6 @@ dev@u22glx:~/ros2_ws/src/gui_lexus(main)$
 ``` yaml
 ros2 topic pub /pacmod/parsed_tx/vehicle_speed_rpt pacmod3_msgs/msg/VehicleSpeedRpt "{header: {stamp: {sec: 0, nanosec: 0}, frame_id: 'map'}, vehicle_speed: 0.1, vehicle_speed_valid: true}"
 ```
-![control](resource/control01.png)
 ![lexus](resource/lexus01.png)
+![lexus](resource/lexus02.png)
+![control](resource/control01.png)

@@ -47,7 +47,7 @@
     "command":"'screen', '-mdS', 'os_32_left_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_left.launch.py'"
 },                               
 {
-    "id":"tfStaticButton", "label":"tf static NO aw", "bgColor":"darkblue",
+    "id":"tfStaticButton_noaw", "label":"tf static NO aw", "bgColor":"darkblue",
     "command":"'screen', '-mdS', 'tfStatic', 'source ~/autoware/install/setup.bash && ros2 launch lexus_bringup tf_static.launch.py'"
 },
 {
