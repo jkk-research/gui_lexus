@@ -84,7 +84,7 @@ class Translator(Node):
             self.m_accel = 1 # -1.0 to + 1.0
             self.m_brake = 2 # -1.0 to + 1.0
             self.m_joy_init = 3
-            self.m_lights_a = 3
+            self.m_lights_a = 4
             self.m_headlight = 3
         else: # joystick1
             # buttons
@@ -140,10 +140,12 @@ class Translator(Node):
         elif(message.buttons[self.m_horn]): # horn  X
             HOCmd.command = True
             #self.get_logger().info("Horn")
-        elif(message.axes[self.m_lights_a] > 0): # lights 
+        elif(message.axes[self.m_lights_a] > 0.5): # lights 
             TUCmd.command = 2
-            #self.get_logger().info("Left")
-        elif(message.axes[self.m_lights_a] < 0): # lights 
+            # self.get_logger().info("Left")
+        elif(message.axes[self.m_lights_a] < -0.5): # lights
+            # self.get_logger().info(str(message.axes[self.m_lights_a]) + " llll")
+            # self.get_logger().info("Right")
             TUCmd.command = 0
             #self.get_logger().info("Right")
         #elif(message.axes[5] < 0): # lights 
@@ -201,6 +203,7 @@ class Translator(Node):
         else:
             ast = "Driver"
         self.get_logger().info("%s accel brake steer: %.1f %.1f %.1f" %(ast, accelCmd.command, brakeCmd.command, steerCmd.command))
+        # self.get_logger().info("TUCmd: %d HECmd: %d WICmd: %d SHCmd: %d HOCmd: %d" %(TUCmd.command, HECmd.command, WICmd.command, SHCmd.command, HOCmd.command))
         self.last_published = message
         self.pubA.publish(accelCmd)
         self.pubB.publish(brakeCmd)
