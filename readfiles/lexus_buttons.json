@@ -47,7 +47,7 @@
             "textColor":"darkblue",
             "bgColor":"lightblue",
             "label":"can",
-            "command":"'screen', '-mdS', 'can_pacmod3', 'ros2 launch lexus_bringup can_pacmod3.launch.xml'"
+            "command":"'screen', '-mdS', 'can_pacmod3', 'ros2 launch lexus_bringup can_and_status.launch.py'"
         },          
         {
             "id":"zed_default_a",
@@ -132,8 +132,16 @@
             "label":"waypoint load Gyor",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_loader_1', 'ros2 run wayp_plan_tools waypoint_loader --ros-args -p file_name:=gyor4eto.csv -p file_dir:=/mnt/bag/waypoints -r __ns:=/lexus3'"
+            "command":"'screen', '-mdS', 'waypoint_l_gyor_1', 'ros2 launch demo_jkk gyor_waypoint_load.launch.py'"
         },
+        {
+            "id":"waypoint_loader_1",
+            "label":"waypoint load Stops",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "command":"'screen', '-mdS', 'waypoint_l_stops_1', 'ros2 launch demo_jkk waypoint_load_with_stops.launch.py'"
+        },
+
         {
             "id":"waypoint_loader",
             "label":"waypoint load Zala",
@@ -146,7 +154,8 @@
             "label":"waypoint to target",
             "textColor":"darkgreen",
             "bgColor":"lightgreen",
-            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=11.0 -p lookahead_max:=17.0 -p mps_alpha:=3.5 -p mps_beta:=5.5 -p waypoint_topic:=waypointarray -p tf_frame_id:=lexus3/base_link -p tf_child_frame_id:=map -r __ns:=/lexus3'"
+            "command":"'screen', '-mdS', 'waypoint_to_target', 'ros2 run wayp_plan_tools waypoint_to_target --ros-args -p lookahead_min:=4.5 -p lookahead_max:=14.0 -p mps_alpha:=1.38 -p mps_beta:=5.5 -p interpolate_waypoints:=true -p waypoint_topic:=waypointarray -p tf_frame_id:=lexus3/base_link -p tf_child_frame_id:=map -p stop_duration:=8.0 -p creep_duration:=6.0 -r __ns:=/lexus3'"
+
         },
         {
             "id":"pursuit_control",
@@ -229,8 +238,14 @@
             "id":"kiss_icp_a",
             "label":"kiss icp a",
             "command":"'screen', '-mdS', 'kiss_icp_a', 'ros2 launch lexus_bringup lidar_odom_kiss_icp_a.launch.py'"
+        },
+        {
+            "id":"waypoint_saver",
+            "label":"waypoint saver",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "command":"'screen', '-mdS', 'waypoint_saver_0', 'ros2 run wayp_plan_tools waypoint_saver --ros-args -p file_name:=gyor99.csv -p file_dir:=/mnt/bag/waypoints -p tf_child_frame_id:=lexus3/base_link -r __ns:=/lexus3'"
         }
-        
 
     ]
 }
