@@ -158,6 +158,14 @@
 
         },
         {
+            "id":"waypoint_to_target_stops",
+            "label":"waypoint to target stops",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "command":"'screen', '-mdS', 'waypoint_to_target_stops', 'ros2 run wayp_plan_tools waypoint_to_target_with_stops --ros-args -p lookahead_min:=4.5 -p lookahead_max:=14.0 -p mps_alpha:=1.38 -p mps_beta:=5.5 -p interpolate_waypoints:=true -p waypoint_topic:=waypointarray -p tf_frame_id:=lexus3/base_link -p tf_child_frame_id:=map -p stop_duration:=8.0 -p creep_duration:=6.0 -r __ns:=/lexus3'"
+
+        },
+        {
             "id":"pursuit_control",
             "label":"pure pursuit",
             "textColor":"darkred",
@@ -259,6 +267,13 @@
             "id":"cluster_a",
             "label":"cluster",
             "command":"'screen', '-mdS', 'cluster_a', 'ros2 launch lexus_bringup lidar_cluster_a.launch.py'"
+        },        
+        {
+            "textColor":"lightblue",
+            "bgColor":"lightgreen",
+            "id":"obstacle_avoidance_a",
+            "label":"obstacle avoidance",
+            "command":"'screen', '-mdS', 'obstacle_avoidance_a', 'ros2 launch demo_jkk obstacle_avoidance_trapezoid.launch.py'"
         },        
         {
             "id":"waypoint_saver",
