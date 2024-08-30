@@ -240,6 +240,27 @@
             "command":"'screen', '-mdS', 'kiss_icp_a', 'ros2 launch lexus_bringup lidar_odom_kiss_icp_a.launch.py'"
         },
         {
+            "textColor":"lightblue",
+            "bgColor":"darkblue",
+            "id":"merged_poincloud_a",
+            "label":"merged lidars intraproc",
+            "command":"'screen', '-mdS', 'merged_poincloud_a', 'ros2 launch lexus_bringup os_composable_raw_merged_b.launch.py'"
+        },
+        {
+            "textColor":"lightblue",
+            "bgColor":"darkblue",
+            "id":"merged_poincloud_b",
+            "label":"merged lidars + filter",
+            "command":"'screen', '-mdS', 'merged_poincloud_b', 'ros2 launch lexus_bringup os_composable_and_cluster_b.launch.py'"
+        },
+        {
+            "textColor":"lightblue",
+            "bgColor":"darkblue",
+            "id":"cluster_a",
+            "label":"cluster",
+            "command":"'screen', '-mdS', 'cluster_a', 'ros2 launch lexus_bringup lidar_cluster_a.launch.py'"
+        },        
+        {
             "id":"waypoint_saver",
             "label":"waypoint saver",
             "textColor":"darkgreen",
