@@ -123,8 +123,12 @@
     "command":"'screen', '-mdS', 'pointcloud_preprocessor', 'source ~/autoware/install/setup.bash && ros2 launch pointcloud_preprocessor preprocessor.launch.xml'"
 },
 {
-    "id":"autoware_all_in",  "bgColor":"darkred", "textColor":"pink", "label":"autoware all in", 
-    "command":"'screen', '-mdS', 'autoware_all_in', 'source ~/autoware/install/setup.bash && ros2 launch ros2 launch autoware_launch autoware.launch.xml vehicle_model:=lexus3_vehicle sensor_kit:=lexus3_sensor_kit sensor_model:=lexus3_sensor_kit map_path:=/home/dev/autoware_map/gyor_campus'"
+    "id":"autoware_all_in_1",  "bgColor":"darkred", "textColor":"pink", "label":"autoware all in1", 
+    "command":"'screen', '-mdS', 'autoware_all_in_1_', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch autoware.launch.xml vehicle_model:=lexus3_vehicle sensor_kit:=lexus3_sensor_kit sensor_model:=lexus3_sensor_kit map_path:=/home/dev/autoware_map/gyor_campus'"
+},   
+{
+    "id":"autoware_all_in_2",  "bgColor":"darkred", "textColor":"pink", "label":"autoware all in2", 
+    "command":"'screen', '-mdS', 'autoware_all_in_2_', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch autoware.launch.xml'"
 },   
 {
     "id":"relay1", "textColor":"lightblue", "bgColor":"darkblue", "label":"relay1",
