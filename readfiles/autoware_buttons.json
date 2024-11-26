@@ -35,16 +35,16 @@
     "command":"'screen', '-mdS', 'zed_default_a', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch zed_default_a.launch.py'"
 },    
 {
-    "id":"os_64_center_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster center",
-    "command":"'screen', '-mdS', 'os_64_center_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_center.launch.py'"
+    "id":"os_64_center_c", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster center",
+    "command":"'screen', '-mdS', 'os_64_center_c', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_center.launch.py'"
 },        
 {
-    "id":"os_32_right_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster right",
-    "command":"'screen', '-mdS', 'os_32_right_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_right.launch.py'"
+    "id":"os_32_right_c", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster right",
+    "command":"'screen', '-mdS', 'os_32_right_c', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_right.launch.py'"
 },         
 {
-    "id":"os_32_left_b", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster left",
-    "command":"'screen', '-mdS', 'os_32_left_b', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_left.launch.py'"
+    "id":"os_32_left_c", "textColor":"darkblue", "bgColor":"lightblue", "label":"ouster left",
+    "command":"'screen', '-mdS', 'os_32_left_c', 'source ~/autoware/install/setup.bash && source ~/ros2_ws/install/setup.bash && ros2 launch autoware_launch lidar_left.launch.py'"
 },                               
 {
     "id":"tfStaticButton_noaw", "label":"tf static NO aw", "bgColor":"darkblue",
@@ -130,6 +130,13 @@
     "id":"autoware_all_in_2",  "bgColor":"darkred", "textColor":"pink", "label":"autoware all in2", 
     "command":"'screen', '-mdS', 'autoware_all_in_2_', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch autoware.launch.xml'"
 },   
+{
+    "textColor":"lightblue",
+    "bgColor":"darkblue",
+    "id":"merged_poincloud_a",
+    "label":"merged lidars intraproc",
+    "command":"'screen', '-mdS', 'merged_poincloud_a', 'ros2 launch lexus_bringup os_composable_raw_merged_b.launch.py'"
+},
 {
     "id":"relay1", "textColor":"lightblue", "bgColor":"darkblue", "label":"relay1",
     "command":"'screen', '-mdS', 'relay1', 'source ~/autoware/install/setup.bash && ros2 run topic_tools relay /lexus3/os_center/points /sensing/lidar/concatenated/pointcloud'"
