@@ -16,26 +16,6 @@
             "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
         },
         {
-            "id":"gps_duro_reference",
-            "textColor":"darkblue",
-            "bgColor":"lightblue",
-            "label":"duro ref",
-            "command":"'screen', '-mdS', 'gps_duro_reference', 'ros2 launch lexus_bringup gps_duro_reference.launch.py'"
-        },
-        {
-            "id":"gps_duro_heading",
-            "bgColor":"lightblue",
-            "label":"duro heading",
-            "command":"'screen', '-mdS', 'gps_duro_heading', 'ros2 launch lexus_bringup gps_duro_heading.launch.py'"
-        },
-        {
-            "id":"gps_duro_dual",
-            "bgColor":"lightblue",
-            "textColor":"darkblue",
-            "label":"duro dual",
-            "command":"'screen', '-mdS', 'gps_duro_dual', 'ros2 launch lexus_bringup gps_duro_dual_heading.launch.py'"
-        },        
-        {
             "id":"gps_nova_a",
             "textColor":"darkblue",
             "bgColor":"lightblue",
@@ -56,20 +36,6 @@
             "label":"zed",
             "command":"'screen', '-mdS', 'zed_default_a', 'ros2 launch lexus_bringup zed_default_a.launch.py'"
         },    
-        {
-            "id":"mako1",
-            "textColor":"darkblue",
-            "bgColor":"lightblue",
-            "label":"mako1",
-            "command":"'screen', '-mdS', 'mako1', 'ros2 launch lexus_bringup mako1.launch.py'"
-        },         
-        {
-            "id":"mako2",
-            "textColor":"darkblue",
-            "bgColor":"lightblue",
-            "label":"mako2",
-            "command":"'screen', '-mdS', 'mako2', 'ros2 launch lexus_bringup mako2.launch.py'"
-        },
         {
             "id":"os_64_center_b",
             "textColor":"darkblue",
@@ -104,8 +70,13 @@
         },
         {
             "id":"foxglove_bridge_launch.xml",
+            "label":"foxglove bridge",
+            "command":"'screen', '-mdS', 'foxglove_bridge', 'ros2 launch lexus_bringup foxglove_bridge_launch.xml'"
+        },
+        {
+            "id":"foxglove_bridge_launch.xml",
             "label":"foxglove",
-            "command":"'screen', '-mdS', 'foxglove', 'ros2 launch lexus_bringup foxglove_bridge_launch.xml'"
+            "command":"'screen', '-mdS', 'foxglove', 'foxglove-studio', 'foxglove://open?ds=foxglove-websocket&ds.url=ws://localhost:8765/'"
         },   
         {
             "id":"path_steering_and_kmph",
@@ -198,8 +169,13 @@
         },  
         {
             "id":"pub_lane_markers",
-            "label":"lanelet uni",
-            "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run gui_lexus pub_lane_markers'"
+            "label":"lanelet zala uni",
+            "command":"'screen', '-mdS', 'lanelet_uni', 'ros2 run gui_lexus pub_lane_markers'"
+        },
+        {
+            "id":"pub_lane_markers_campus",
+            "label":"lanelet campus",
+            "command":"'screen', '-mdS', 'lanelet_campus', 'ros2 launch demo_jkk lanelet_visualize.launch.py map:=gyor1'"
         },
         {
             "id":"joystick",
