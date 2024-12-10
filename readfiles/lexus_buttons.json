@@ -71,7 +71,7 @@
         {
             "id":"foxglove_bridge_launch.xml",
             "label":"foxglove bridge",
-            "command":"'screen', '-mdS', 'foxglove_bridge', 'ros2 launch lexus_bringup foxglove_bridge_launch.xml'"
+            "command":"'screen', '-mdS', 'foxglove_bridge', 'ros2 launch lexus_bringup foxglove_bridge.launch.py'"
         },
         {
             "id":"foxglove_bridge_launch.xml",
