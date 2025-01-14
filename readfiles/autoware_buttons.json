@@ -135,7 +135,7 @@
     "bgColor":"darkblue",
     "id":"merged_poincloud_a",
     "label":"merged lidars intraproc",
-    "command":"'screen', '-mdS', 'merged_poincloud_a', 'ros2 launch lexus_bringup os_composable_raw_merged_b.launch.py'"
+    "command":"'screen', '-mdS', 'merged_poincloud_a', 'ros2 launch lexus_bringup os_composable_raw_merged_b_autoware.launch.py'"
 },
 {
     "id":"relay1", "textColor":"lightblue", "bgColor":"darkblue", "label":"relay1",
