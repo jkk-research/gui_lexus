@@ -22,11 +22,11 @@ class PlotHandler(Node):
         # may raise PackageNotFoundError
         self.scriptDir = get_package_share_directory('gui_lexus')
         try:
-            buttonJSON = self.get_parameter('buttons').value
+            self.buttonJSON = self.get_parameter('buttons').value
         except:
             self.declare_parameter('buttons', 'default.json')
-            buttonJSON = self.get_parameter('buttons').value
-        buttonReader = JSONReader(self.scriptDir + '/readfiles/' + buttonJSON)
+            self.buttonJSON = self.get_parameter('buttons').value
+        buttonReader = JSONReader(self.scriptDir + '/readfiles/' + self.buttonJSON)
         self.buttonData = buttonReader.data['buttons']
         self.screenButtons = {}
         self.dictOfWidgets = {}
@@ -52,6 +52,8 @@ class PlotHandler(Node):
             buttonFunction = buttonFunction.replace("'","")
             buttonFunction = re.split(r'[,]\s*', buttonFunction)
             self.screenButtons[buttonName].clicked.connect(partial(self.buttonClicked, buttonFunction))
+            self.screenButtons[buttonName].setMouseTracking(True)
+            self.screenButtons[buttonName].enterEvent = partial(self.buttonHover, buttonName, buttonBgColor, buttonTextColor)
             self.screenButtons[buttonName].setStyleSheet("background-color: " + buttonBgColor + "; color: " + buttonTextColor)
             if col<4:
                 col+=1
@@ -74,7 +76,7 @@ class PlotHandler(Node):
         self.win.move(600, 200)
         self.win.setCentralWidget(area)
         
-        dock1 = darea.Dock("WELCOME TO LEXUS GUI", size = (1,1))  # give this dock minimum possible size
+        dock1 = darea.Dock("GUI: " + self.buttonJSON, size = (1,1))  # give this dock minimum possible size
         area.addDock(dock1, "left")
         widg1 = pg.LayoutWidget()
         self.initButtons(widg1)
@@ -100,11 +102,17 @@ class PlotHandler(Node):
         dock1.addWidget(self.listwidget)
 
         widg2 = pg.LayoutWidget()
+        self.dispHoverCmdTextLabel = qtgqt.QtWidgets.QLabel("Hovered command:")
+        self.dispHoverCmd = qtgqt.QtWidgets.QPlainTextEdit("None")
+        self.dispHoverCmd.setFixedHeight(60) # more lines
+        self.dispHoverCmd.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(171, 178, 191);")
         self.saveWayPointsButton = qtgqt.QtWidgets.QPushButton("Save Waypoints")
         self.loadWayPointsButton = qtgqt.QtWidgets.QPushButton("Load Waypoints")
         widg2.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(230, 240, 250);")
-        widg2.addWidget(self.saveWayPointsButton, row=0, col=0)
-        widg2.addWidget(self.loadWayPointsButton, row=1, col=0)
+        widg2.addWidget(self.dispHoverCmdTextLabel, row=0, col=1)
+        widg2.addWidget(self.dispHoverCmd, row=1, col=1)
+        widg2.addWidget(self.saveWayPointsButton, row=2, col=1)
+        widg2.addWidget(self.loadWayPointsButton, row=3, col=1)
 
         self.loadWayPointsButton.clicked.connect(self.loadWaypoints)
         self.saveWayPointsButton.clicked.connect(self.saveWaypoints)
@@ -145,6 +153,13 @@ class PlotHandler(Node):
         print(p.communicate()[0])
         self.update()
 
+    def buttonHover(self, buttonName, buttonBgColor, buttonTextColor, event):
+        # self.get_logger().info("Button: " + buttonName + " hovered")
+        # display the command of the hovered button
+        for button in self.buttonData:
+            if button["id"] == buttonName:
+                self.dispHoverCmd.setPlainText(button["command"])
+                break
 
     def update(self, screenName=None):
         self.listwidget.clear()
