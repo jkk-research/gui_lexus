@@ -5,9 +5,17 @@
         "id":"can_pacmod", "textColor":"darkblue", "bgColor":"lightblue", "label":"can",
         "command":"'screen', '-mdS', 'can_pacmod3', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch can1.launch.xml'"
     },
-{
-    "id":"tfStaticButton", "label":"tf static", "bgColor":"darkblue", "textColor":"lightblue", 
-    "command":"'screen', '-mdS', 'tfStatic_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch tf_static.launch.py'"
-}
+    {
+        "id":"tfStaticButton", "label":"tf static", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'tfStatic_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch tf_static.launch.py'"
+    },
+    {
+        "id":"sensing_launch", "label":"sensing_launch", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'sensing_launch', 'source ~/autoware/install/setup.bash && ros2 launch lexus3_sensor_kit_launch sensing.launch.xml'" 
+    },
+    {
+        "id":"pointcloud_preprocessor", "label":"pointcloud_preprocessor", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'pointcloud_preprocessor', 'source ~/autoware/install/setup.bash && ros2 launch lexus3_sensor_kit_launch pointcloud_preprocessor.launch.py use_concat_filter:=true'" 
+    }
 ]
 }
