@@ -2,6 +2,16 @@
 "buttons":
 [
     {
+        "id":"foxglove_bridge_launch.xml",
+        "label":"foxglove bridge",
+        "command":"'screen', '-mdS', 'foxglove_bridge', 'ros2 launch lexus_bringup foxglove_bridge.launch.py'"
+    },
+    {
+        "id":"foxglove_bridge_launch.xml",
+        "label":"foxglove",
+        "command":"'screen', '-mdS', 'foxglove', 'foxglove-studio', 'foxglove://open?ds=foxglove-websocket&ds.url=ws://localhost:8765/'"
+    },   
+    {
         "id":"can_pacmod", "textColor":"darkblue", "bgColor":"lightblue", "label":"can",
         "command":"'screen', '-mdS', 'can_pacmod3', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch can1.launch.xml'"
     },
@@ -12,6 +22,10 @@
     {
         "id":"sensing_launch", "label":"sensing_launch", "bgColor":"darkblue", "textColor":"lightblue", 
         "command":"'screen', '-mdS', 'sensing_launch', 'source ~/autoware/install/setup.bash && ros2 launch lexus3_sensor_kit_launch sensing.launch.xml'" 
+    },
+    {
+        "id":"sensing_launch", "label":"sensing_launch", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'sensing_launch', 'source ~/ros2_ws/install/setup.bash && ros2 launch lexus_bringup os_composable_raw_merged_b_autoware.launch.py'" 
     },
     {
         "id":"pointcloud_preprocessor", "label":"pointcloud_preprocessor", "bgColor":"darkblue", "textColor":"lightblue", 
