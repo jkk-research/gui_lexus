@@ -20,12 +20,12 @@
         "command":"'screen', '-mdS', 'tfStatic_aw', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch tf_static.launch.py'"
     },
     {
-        "id":"sensing_launch", "label":"sensing_launch", "bgColor":"darkblue", "textColor":"lightblue", 
-        "command":"'screen', '-mdS', 'sensing_launch', 'source ~/autoware/install/setup.bash && ros2 launch lexus3_sensor_kit_launch sensing.launch.xml'" 
-    },
-    {
         "id":"ousters", "label":"ousters", "bgColor":"darkblue", "textColor":"lightblue", 
         "command":"'screen', '-mdS', 'ousters', 'source ~/ros2_ws/install/setup.bash && ros2 launch lexus_bringup os_composable_raw_merged_b_autoware.launch.py'" 
+    },
+    {
+        "id":"raw_vehicle_converter", "label":"raw_vehicle_converter", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'raw_vehicle_converter', 'source ~/autoware/install/setup.bash && ros2 launch autoware_raw_vehicle_cmd_converter raw_vehicle_converter.launch.xml'" 
     },
     {
         "id":"pointcloud_preprocessor", "label":"pointcloud_preprocessor", "bgColor":"darkblue", "textColor":"lightblue", 
