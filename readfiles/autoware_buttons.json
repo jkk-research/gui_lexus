@@ -37,7 +37,7 @@
     },
     {
         "id":"aw_base", "label":"aw base", "bgColor":"darkred", "textColor":"black",
-        "command":"'screen', '-mdS', 'aw_base', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch autoware.launch.xml launch_sensing:=false launch_perception:=true launch_planning:=true launch_control:=true"
+        "command":"'screen', '-mdS', 'aw_base', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch autoware.launch.xml launch_sensing:=true launch_perception:=true launch_planning:=true launch_control:=true"
     },    
     {
         "id":"aw_sensors", "label":"aw sensors", "bgColor":"darkred", "textColor":"black",
