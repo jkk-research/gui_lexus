@@ -45,7 +45,7 @@
     },
     {
         "id":"rqt_diagnostic_graph_monitor", "label":"rqt_diagnostic_graph_monitor", "bgColor":"darkblue", "textColor":"lightblue", 
-        "command":"'screen', '-mdS', 'raw_vehicle_converter', 'source ~/autoware/install/setup.bash && ros2 run rqt_diagnostic_graph_monitor rqt_diagnostic_graph_monitor'" 
+        "command":"'screen', '-mdS', 'rqt_diagnostic_graph_monitor', 'source ~/autoware/install/setup.bash && ros2 run rqt_diagnostic_graph_monitor rqt_diagnostic_graph_monitor'" 
     }
 ]
 }
