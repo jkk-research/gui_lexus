@@ -44,6 +44,10 @@
         "command":"'screen', '-mdS', 'aw_sensors', 'source ~/ros2_ws/install/setup.bash && source ~/autoware/install/setup.bash && ros2 launch autoware_launch lexus3_sensors_autoware.launch.py'"
     },
     {
+        "id":"usb_cam", "label":"usb_cam", "bgColor":"darkblue", "textColor":"lightblue", 
+        "command":"'screen', '-mdS', 'usb_cam', 'source ~/autoware/install/setup.bash && ros2 launch lexus_bringup usb_web_cam1.launch.py" 
+    },
+    {
         "id":"rqt_diagnostic_graph_monitor", "label":"rqt_diagnostic_graph_monitor", "bgColor":"darkblue", "textColor":"lightblue", 
         "command":"'screen', '-mdS', 'rqt_diagnostic_graph_monitor', 'source ~/autoware/install/setup.bash && ros2 run rqt_diagnostic_graph_monitor rqt_diagnostic_graph_monitor'" 
     }
