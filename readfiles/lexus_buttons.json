@@ -16,6 +16,9 @@
             "command":"'screen', '-mdS', 'rviz2_static', 'ros2 launch demo_jkk rviz_static1.launch.py'"
         },
         {
+            "id":"new_line"
+        },        
+        {
             "id":"gps_nova_a",
             "textColor":"darkblue",
             "bgColor":"lightblue",
@@ -166,7 +169,10 @@
             "id":"rviz_text2",
             "label":"rviz text control status",
             "command":"'screen', '-mdS', 'rviz_text2', 'ros2 run rviz_2d_overlay_plugins string_to_overlay_text --ros-args -p string_topic:=/lexus3/control_status -p fg_color:=g'"
-        },  
+        },
+        {
+            "id":"new_line"
+        },
         {
             "id":"pub_lane_markers",
             "label":"lanelet zala uni",
@@ -183,6 +189,9 @@
             "textColor":"darkred",
             "bgColor":"pink",
             "command":"'screen', '-mdS', 'joystick1', 'ros2 launch gui_lexus translator_joystick_1.launch.py'"
+        },
+        {
+            "id":"new_line"
         },                        
         {
             "id":"rqt_reconfigure_button",
@@ -208,6 +217,9 @@
             "id":"rqt_graph",
             "label":"rqt graph",
             "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
+        },
+        {
+            "id":"new_line"
         },
         {
             "textColor":"lightblue",

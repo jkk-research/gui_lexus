@@ -10,7 +10,10 @@
         "id":"foxglove_bridge_launch.xml",
         "label":"foxglove",
         "command":"'screen', '-mdS', 'foxglove', 'foxglove-studio', 'foxglove://open?ds=foxglove-websocket&ds.url=ws://localhost:8765/'"
-    },   
+    },
+    {
+        "id": "new_line"
+    },
     {
         "id":"can_pacmod", "textColor":"darkblue", "bgColor":"lightblue", "label":"can",
         "command":"'screen', '-mdS', 'can_pacmod3', 'source ~/autoware/install/setup.bash && ros2 launch autoware_launch can1.launch.xml'"
@@ -46,6 +49,29 @@
     {
         "id":"usb_cam", "label":"usb_cam", "bgColor":"darkblue", "textColor":"lightblue", 
         "command":"'screen', '-mdS', 'usb_cam', 'source ~/autoware/install/setup.bash && ros2 launch lexus_bringup usb_web_cam1.launch.py" 
+    },
+    {
+        "id":"new_line"
+    },                        
+    {
+        "id":"rqt_reconfigure_button", "label":"rqt reconfigure",
+        "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_reconfigure rqt_reconfigure'"
+    },        
+    {
+        "id":"rqt_tf_tree", "label":"rqt tf tree",
+        "command":"'screen', '-mdS', 'rqt_tf_tree', 'ros2 run rqt_tf_tree rqt_tf_tree'"
+    },                        
+    {
+        "id":"rqt_topic", "label":"rqt topic",
+        "command":"'screen', '-mdS', 'rqt_topic', 'ros2 run rqt_topic rqt_topic'"
+    },                        
+    {
+        "id":"rqt_console", "label":"rqt console",
+        "command":"'screen', '-mdS', 'rqt_console', 'ros2 run rqt_console rqt_console'"
+    },       
+    {
+        "id":"rqt_graph", "label":"rqt graph",
+        "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
     },
     {
         "id":"rqt_diagnostic_graph_monitor", "label":"rqt_diagnostic_graph_monitor", "bgColor":"darkblue", "textColor":"lightblue", 

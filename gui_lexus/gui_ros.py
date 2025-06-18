@@ -38,28 +38,34 @@ class PlotHandler(Node):
         col, row = (0, 4)
         countRows = len(self.buttonData)//5
         for button in self.buttonData:
-            buttonName, buttonLabel, buttonFunction = button["id"], button["label"], button["command"]
-            buttonBgColor, buttonTextColor = "rgb(40, 44, 52)", "rgb(171, 178, 191)"
-            if "bgColor" in button.keys():
-                buttonBgColor = button["bgColor"]
-            if "textColor" in button.keys():
-                buttonTextColor = button["textColor"]
-            
+            buttonName = button.get("id", "")
+            buttonLabel = button.get("label", "")
+            buttonFunction = button.get("command", "")
+            buttonBgColor = button.get("bgColor", "rgb(40, 44, 52)")
+            buttonTextColor = button.get("textColor", "rgb(171, 178, 191)")
+
+            # If only "id" is present and no label/command, treat as a layout marker (e.g., new line)
+            if not buttonLabel and not buttonFunction:
+                # Move to next row if "id" is "new_line" or similar
+                if buttonName == "new_line":
+                    col = 0
+                    row += 1
+                continue
+
             self.screenButtons[buttonName] = qtgqt.QtWidgets.QPushButton(buttonLabel)
-            
             widget.addWidget(self.screenButtons[buttonName], row=row, col=col)
 
-            buttonFunction = buttonFunction.replace("'","")
+            buttonFunction = buttonFunction.replace("'", "")
             buttonFunction = re.split(r'[,]\s*', buttonFunction)
             self.screenButtons[buttonName].clicked.connect(partial(self.buttonClicked, buttonFunction))
             self.screenButtons[buttonName].setMouseTracking(True)
             self.screenButtons[buttonName].enterEvent = partial(self.buttonHover, buttonName, buttonBgColor, buttonTextColor)
             self.screenButtons[buttonName].setStyleSheet("background-color: " + buttonBgColor + "; color: " + buttonTextColor)
-            if col<4:
-                col+=1
+            if col < 4:
+                col += 1
             else:
-                col=0
-                row+=1
+                col = 0
+                row += 1
 
     def initializePlot(self):
         self.win = qtgqt.QtWidgets.QMainWindow()
