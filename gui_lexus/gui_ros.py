@@ -46,8 +46,10 @@ class PlotHandler(Node):
 
             # If only "id" is present and no label/command, treat as a layout marker (e.g., new line)
             if not buttonLabel and not buttonFunction:
-                # Move to next row if "id" is "new_line" or similar
                 if buttonName == "new_line":
+                    # spacer = qtgqt.QtWidgets.QLabel("----") # TODO: Spacer label
+                    # spacer.setFixedHeight(200)  # Set a minimum height for the spacer
+                    # widget.addWidget(spacer, row+1, 0, 1, 5) # Add spacer to the layout
                     col = 0
                     row += 1
                 continue
