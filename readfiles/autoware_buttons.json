@@ -82,7 +82,7 @@
     },
     {
         "id":"goal01", "label":"goal parkolo", "bgColor":"darkgreen", "textColor":"lightgreen",
-        "command": "ros2 topic pub --once /goal_pose geometry_msgs/msg/PoseStamped <<EOF\nheader:\n  stamp:\n    sec: 0\n    nanosec: 0\n  frame_id: map\npose:\n  position:\n    x: 0.8\n    y: 2.2\n    z: 0.1\n  orientation:\n    x: 0.0\n    y: 0.0\n    z: 0.70710678\n    w: 0.70710678\nEOF"
+        "command": "ros2 topic pub --once /planning/mission_planning/goal geometry_msgs/msg/PoseStamped <<EOF\nheader:\n  stamp:\n    sec: 0\n    nanosec: 0\n  frame_id: map\npose:\n  position:\n    x: 0.8\n    y: 2.2\n    z: 0.1\n  orientation:\n    x: 0.0\n    y: 0.0\n    z: 0.70710678\n    w: 0.70710678\nEOF"
     }
 ]
 }
