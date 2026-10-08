@@ -1,0 +1,105 @@
+{
+    "buttons":
+    [
+        {
+            "id":"nissan_bringup",
+            "textColor":"darkgreen",
+            "bgColor":"lightgreen",
+            "label":"low level bringup",
+            "command":"'screen', '-mdS', 'nissan_bringup', 'ros2 launch nissan_bringup nissan_bridge_low_level.launch.py'"
+        },
+        {
+            "id":"new_line"
+        },
+        {
+            "id":"cam_tieriv_c2",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"camera tieriv c2",
+            "command":"'screen', '-mdS', 'cam_tieriv_c2', 'ros2 launch nissan_bringup cam_tieriv_c2.launch.py'"
+        },
+        {
+            "id":"car_parameters",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"car parameters leaf",
+            "command":"'screen', '-mdS', 'car_parameters', 'ros2 launch nissan_bringup car_parameters_leaf.launch.py'"
+        },
+        {
+            "id":"new_line"
+        },
+        {
+            "id":"gps_duro",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"gps duro",
+            "command":"'screen', '-mdS', 'gps_duro', 'ros2 launch nissan_bringup gps_duro.launch.py'"
+        },
+        {
+            "id":"gps_fixposition",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"gps fixposition",
+            "command":"'screen', '-mdS', 'gps_fixposition', 'ros2 launch nissan_bringup gps_fixposition.launch.py'"
+        },
+        {
+            "id":"gps_nova",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"gps nova",
+            "command":"'screen', '-mdS', 'gps_nova', 'ros2 launch nissan_bringup gps_nova.launch.py'"
+        },
+        {
+            "id":"new_line"
+        },
+        {
+            "id":"lidar_ouster",
+            "textColor":"darkblue",
+            "bgColor":"lightblue",
+            "label":"lidar ouster",
+            "command":"'screen', '-mdS', 'lidar_ouster', 'ros2 launch nissan_bringup lidar_ouster.launch.py'"
+        },
+        {
+            "id":"new_line"
+        },
+        {
+            "id":"tf_static",
+            "label":"tf static",
+            "command":"'screen', '-mdS', 'tfStatic', 'ros2 launch nissan_bringup tf_static.launch.py'",
+            "bgColor":"black"
+        },
+        {
+            "id":"3d_nissan",
+            "label":"3d nissan",
+            "command":"'screen', '-mdS', '3d_nissan', 'ros2 launch nissan_bringup 3d_nissan.launch.py'"
+        },
+        {
+            "id":"new_line"
+        },
+        {
+            "id":"rqt_reconfigure",
+            "label":"rqt reconfigure",
+            "command":"'screen', '-mdS', 'rqt_reconfigure', 'ros2 run rqt_reconfigure rqt_reconfigure'"
+        },
+        {
+            "id":"rqt_tf_tree",
+            "label":"rqt tf tree",
+            "command":"'screen', '-mdS', 'rqt_tf_tree', 'ros2 run rqt_tf_tree rqt_tf_tree'"
+        },
+        {
+            "id":"rqt_topic",
+            "label":"rqt topic",
+            "command":"'screen', '-mdS', 'rqt_topic', 'ros2 run rqt_topic rqt_topic'"
+        },
+        {
+            "id":"rqt_console",
+            "label":"rqt console",
+            "command":"'screen', '-mdS', 'rqt_console', 'ros2 run rqt_console rqt_console'"
+        },
+        {
+            "id":"rqt_graph",
+            "label":"rqt graph",
+            "command":"'screen', '-mdS', 'rqt_graph', 'rqt_graph'"
+        }
+    ]
+}
