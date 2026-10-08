@@ -63,6 +63,16 @@
             "id":"new_line"
         },
         {
+            "id":"foxglove_bridge_launch.xml",
+            "label":"foxglove bridge",
+            "command":"'screen', '-mdS', 'foxglove_bridge', 'source ~/autoware/install/setup.bash &&  ros2 launch lexus_bringup foxglove_bridge.launch.py'"
+        },
+                {
+            "id":"foxglove_studio",
+            "label":"foxglove",
+            "command":"'screen', '-mdS', 'foxglove', 'foxglove-studio', 'foxglove://open?ds=foxglove-websocket&ds.url=ws://localhost:8765/'"
+        }, 
+        {
             "id":"tf_static",
             "label":"tf static",
             "command":"'screen', '-mdS', 'tfStatic', 'ros2 launch nissan_bringup tf_static.launch.py'",
